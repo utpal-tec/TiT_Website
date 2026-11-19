@@ -1,0 +1,2526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TECHNO INSTITUTE OF TECHNOLOGY | YOUR SUCCESS OUR GOAL</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand-font {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Continuous Blinking Animation for TIT ONLINE */
+    @keyframes titBlink {
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 14px rgba(239, 68, 68, 0.75);
+      }
+
+      50% {
+        opacity: 0.25;
+        transform: scale(0.97);
+        box-shadow: 0 0 2px rgba(239, 68, 68, 0.2);
+      }
+    }
+
+    .blink-tit-online {
+      animation: titBlink 1.1s infinite ease-in-out;
+    }
+
+    /* Smooth dropdown hover on desktop */
+    @media (min-width: 768px) {
+      .nav-dropdown:hover .nav-dropdown-menu {
+        display: block;
+      }
+    }
+
+    /* Custom Scrollbar for CBT Question Palette */
+    .cbt-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    .cbt-scroll::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 8px;
+    }
+
+    .cbt-scroll::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <!-- ==================== GLOBAL NOTIFICATION / MESSAGE MODAL ==================== -->
+  <div id="globalModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/70 backdrop-blur-sm p-4">
+    <div
+      class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-200 animate-[fadeIn_0.2s_ease-out]">
+      <div id="globalModalHeader" class="px-6 py-4 bg-blue-900 text-white flex items-center justify-between">
+        <h3 id="globalModalTitle" class="text-lg font-bold flex items-center gap-2">
+          <i class="fa-solid fa-circle-info"></i> Notification
+        </h3>
+        <button onclick="closeGlobalModal()"
+          class="text-white/80 hover:text-white text-xl leading-none">&times;</button>
+      </div>
+      <div id="globalModalBody" class="p-6 text-slate-700 text-sm sm:text-base leading-relaxed"></div>
+      <div id="globalModalFooter" class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
+        <button id="globalModalOkBtn" onclick="closeGlobalModal()"
+          class="px-5 py-2.5 bg-blue-800 hover:bg-blue-900 text-white font-semibold rounded-xl shadow transition">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOP BRANDING HEADER ==================== -->
+  <header id="mainHeader"
+    class="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 text-white border-b border-blue-800/60 shadow-md">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+      <!-- Left: Logo + Institute Name + Tagline -->
+      <div class="flex items-center gap-3.5 sm:gap-4 text-center sm:text-left">
+        <div class="relative group flex-shrink-0">
+          <div
+            class="block w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white p-1.5 shadow-lg border-2 border-amber-400 overflow-hidden relative transition transform group-hover:scale-105">
+            <img id="instituteLogoImg" src="logo.jpg" alt="TIT Logo" class="w-full h-full object-contain rounded-xl" />
+          </div>
+        </div>
+
+        <div>
+          <div
+            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-800/60 border border-blue-500/40 text-amber-300 text-[11px] font-semibold tracking-wider uppercase mb-1">
+            <i class="fa-solid fa-award"></i> ISO 9001:2015 &amp; Govt. Registered Institute
+          </div>
+          <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-white leading-tight">
+            TECHNO INSTITUTE OF TECHNOLOGY
+          </h1>
+          <p class="text-xs sm:text-sm font-bold tracking-[0.2em] text-amber-400 uppercase mt-0.5">
+            YOUR SUCCESS OUR GOAL
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Continuous Blinking "TIT ONLINE" Indicator -->
+      <div class="flex items-center gap-3">
+        <button onclick="navigateTo('cbt')"
+          class="blink-tit-online inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-red-600 to-rose-600 border-2 border-amber-300 text-white font-extrabold text-xs sm:text-sm tracking-widest uppercase shadow-lg cursor-pointer">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-300 inline-block"></span>
+          <span>TIT ONLINE</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="bg-blue-900/95 border-t border-blue-800/80 backdrop-blur-md sticky top-0 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-12 sm:h-14">
+          <!-- Mobile Menu Toggle -->
+          <div class="flex items-center md:hidden">
+            <button onclick="toggleMobileMenu()"
+              class="p-2 rounded-lg text-blue-100 hover:text-white hover:bg-blue-800 focus:outline-none">
+              <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+            </button>
+            <span class="ml-2 text-sm font-bold text-amber-300 tracking-wide">MENU</span>
+          </div>
+
+          <!-- Desktop Nav Items -->
+          <div class="hidden md:flex md:items-center md:space-x-2 lg:space-x-4 w-full justify-between">
+            <div class="flex items-center space-x-1 lg:space-x-2">
+              <!-- Home -->
+              <button onclick="navigateTo('home')" data-nav="home"
+                class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-white hover:bg-blue-800 transition flex items-center gap-2">
+                <i class="fa-solid fa-house text-amber-400"></i> Home
+              </button>
+
+              <!-- About Dropdown -->
+              <div class="relative nav-dropdown">
+                <button onclick="toggleDropdown('aboutDropdownMenu')" data-nav="about"
+                  class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-white hover:bg-blue-800 transition flex items-center gap-2">
+                  <i class="fa-solid fa-building-columns text-amber-400"></i> About
+                  <i class="fa-solid fa-chevron-down text-xs opacity-80"></i>
+                </button>
+                <div id="aboutDropdownMenu"
+                  class="nav-dropdown-menu hidden absolute left-0 mt-1 w-48 rounded-2xl bg-white shadow-xl border border-slate-200 py-1.5 z-50 text-slate-800">
+                  <button onclick="navigateTo('about-us')"
+                    class="w-full text-left px-4 py-2.5 text-sm font-semibold hover:bg-blue-50 hover:text-blue-800 flex items-center gap-2.5 transition">
+                    <i class="fa-solid fa-circle-info text-blue-700 w-4"></i> About Us
+                  </button>
+                  <button onclick="navigateTo('contact-us')"
+                    class="w-full text-left px-4 py-2.5 text-sm font-semibold hover:bg-blue-50 hover:text-blue-800 flex items-center gap-2.5 transition">
+                    <i class="fa-solid fa-headset text-blue-700 w-4"></i> Contact Us
+                  </button>
+                </div>
+              </div>
+
+              <!-- Examination Dropdown -->
+              <div class="relative nav-dropdown">
+                <button onclick="toggleDropdown('examDropdownMenu')" data-nav="cbt"
+                  class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-white hover:bg-blue-800 transition flex items-center gap-2">
+                  <i class="fa-solid fa-laptop-file text-amber-400"></i> Examination
+                  <i class="fa-solid fa-chevron-down text-xs opacity-80"></i>
+                </button>
+                <div id="examDropdownMenu"
+                  class="nav-dropdown-menu hidden absolute left-0 mt-1 w-52 rounded-2xl bg-white shadow-xl border border-slate-200 py-1.5 z-50 text-slate-800">
+                  <button onclick="navigateTo('cbt')"
+                    class="w-full text-left px-4 py-2.5 text-sm font-bold text-blue-900 hover:bg-amber-50 flex items-center gap-2.5 transition">
+                    <i class="fa-solid fa-desktop text-rose-600 w-4"></i> CBT TEST
+                  </button>
+                </div>
+              </div>
+
+              <!-- Admin -->
+              <button onclick="navigateTo('admin')" data-nav="admin"
+                class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-white hover:bg-blue-800 transition flex items-center gap-2">
+                <i class="fa-solid fa-user-shield text-amber-400"></i> Admin
+              </button>
+            </div>
+
+            <!-- Right CTA: Sign Up -->
+            <div class="flex items-center gap-2">
+              <button onclick="navigateTo('signup')" data-nav="signup"
+                class="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm shadow-md transition flex items-center gap-2">
+                <i class="fa-solid fa-user-plus"></i> Sign Up
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile Quick Sign Up -->
+          <div class="md:hidden">
+            <button onclick="navigateTo('signup')"
+              class="px-3.5 py-1.5 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-xs shadow">
+              <i class="fa-solid fa-user-plus mr-1"></i> Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Drawer -->
+      <div id="mobileMenuDrawer"
+        class="hidden md:hidden bg-blue-950 border-t border-blue-800 px-4 pt-2 pb-4 space-y-1.5">
+        <button onclick="navigateTo('home')"
+          class="w-full text-left px-3 py-2.5 rounded-xl text-white font-semibold hover:bg-blue-800 flex items-center gap-2.5">
+          <i class="fa-solid fa-house text-amber-400 w-5"></i> Home
+        </button>
+        <div class="pl-3 border-l-2 border-blue-700 space-y-1">
+          <div class="text-xs font-bold uppercase text-blue-300 px-2 pt-1">About</div>
+          <button onclick="navigateTo('about-us')"
+            class="w-full text-left px-3 py-2 rounded-xl text-white text-sm font-medium hover:bg-blue-800 flex items-center gap-2">
+            <i class="fa-solid fa-circle-info text-amber-400 w-4"></i> About Us
+          </button>
+          <button onclick="navigateTo('contact-us')"
+            class="w-full text-left px-3 py-2 rounded-xl text-white text-sm font-medium hover:bg-blue-800 flex items-center gap-2">
+            <i class="fa-solid fa-headset text-amber-400 w-4"></i> Contact Us
+          </button>
+        </div>
+        <div class="pl-3 border-l-2 border-blue-700 space-y-1">
+          <div class="text-xs font-bold uppercase text-blue-300 px-2 pt-1">Examination</div>
+          <button onclick="navigateTo('cbt')"
+            class="w-full text-left px-3 py-2 rounded-xl text-amber-300 text-sm font-bold hover:bg-blue-800 flex items-center gap-2">
+            <i class="fa-solid fa-desktop text-rose-400 w-4"></i> CBT TEST
+          </button>
+        </div>
+        <button onclick="navigateTo('admin')"
+          class="w-full text-left px-3 py-2.5 rounded-xl text-white font-semibold hover:bg-blue-800 flex items-center gap-2.5">
+          <i class="fa-solid fa-user-shield text-amber-400 w-5"></i> Admin
+        </button>
+        <button onclick="navigateTo('signup')"
+          class="w-full text-left px-3 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-extrabold flex items-center gap-2.5">
+          <i class="fa-solid fa-user-plus w-5"></i> Sign Up
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
+  <main class="flex-grow">
+
+    <!-- ============================================================
+         SECTION 1: HOME PAGE
+    ============================================================ -->
+    <section id="page-home" class="page-section space-y-14 pb-16">
+
+      <!-- 1A. Welcome to TIT Hero Banner -->
+      <div class="relative bg-gradient-to-br from-blue-950 via-indigo-900 to-slate-900 text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-15 pointer-events-none"
+          style="background-image: radial-gradient(#fbbf24 1px, transparent 1px); background-size: 24px 24px;"></div>
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 space-y-6">
+            <div
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-bold">
+              <i class="fa-solid fa-graduation-cap"></i> Welcome to Techno Institute of Technology (TIT)
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">
+              Welcome to <span class="text-amber-400">TIT</span> — Empowering Minds, Shaping Futures
+            </h2>
+            <p class="text-blue-100 text-base sm:text-lg leading-relaxed max-w-2xl">
+              At <strong>TECHNO INSTITUTE OF TECHNOLOGY</strong>, we blend modern digital education, skill development,
+              environmental sustainability, and holistic wellness. Join thousands of learners across India and take our
+              official Computer-Based Test (CBT) from anywhere in the world.
+            </p>
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button onclick="navigateTo('signup')"
+                class="px-6 py-3.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm sm:text-base shadow-lg shadow-amber-500/20 transition flex items-center gap-2">
+                <i class="fa-solid fa-user-plus"></i> Student Registration (Sign Up)
+              </button>
+              <button onclick="navigateTo('cbt')"
+                class="px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold text-sm sm:text-base backdrop-blur transition flex items-center gap-2">
+                <i class="fa-solid fa-laptop-code text-amber-300"></i> Enter CBT Test Portal
+              </button>
+            </div>
+          </div>
+
+          <!-- Highlight Quick Stats Card -->
+          <div class="lg:col-span-5">
+            <div
+              class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
+              <div class="flex items-center justify-between border-b border-white/15 pb-4">
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-amber-300 font-bold">Online Examination Portal</p>
+                  <h3 class="text-xl font-extrabold text-white mt-0.5">All-India CBT Assessment</h3>
+                </div>
+                <div
+                  class="w-12 h-12 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center text-xl font-black shadow">
+                  <i class="fa-solid fa-award"></i>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-900/50 rounded-2xl p-4 border border-white/10">
+                  <div class="text-2xl font-extrabold text-amber-400">50 Marks</div>
+                  <div class="text-xs text-blue-200 mt-0.5">1 Mark Each Question</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-2xl p-4 border border-white/10">
+                  <div class="text-2xl font-extrabold text-emerald-400">60 Mins</div>
+                  <div class="text-xs text-blue-200 mt-0.5">No Negative Marking</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-2xl p-4 border border-white/10">
+                  <div class="text-2xl font-extrabold text-sky-400">100% Online</div>
+                  <div class="text-xs text-blue-200 mt-0.5">Global 24x7 Access</div>
+                </div>
+                <div class="bg-slate-900/50 rounded-2xl p-4 border border-white/10">
+                  <div class="text-2xl font-extrabold text-rose-400">Instant</div>
+                  <div class="text-xs text-blue-200 mt-0.5">Only for Madhyamik Students 2027</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1B. Director Message Section -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+            <!-- Director Photo (Left) -->
+            <div
+              class="lg:col-span-4 bg-gradient-to-b from-blue-900 to-slate-900 p-8 flex flex-col items-center text-center text-white h-full justify-center">
+              <div class="relative group">
+                <div
+                  class="block w-48 h-48 sm:w-56 sm:h-56 rounded-3xl overflow-hidden border-4 border-amber-400 shadow-2xl relative bg-slate-800">
+                  <img id="directorPhotoImg" src="diractor.png" alt="Director of TIT"
+                    class="w-full h-full object-cover" />
+                </div>
+              </div>
+              <h3 class="text-xl font-extrabold mt-5 text-white">Mr. Mahitosh Patra</h3>
+              <p class="text-xs font-bold uppercase tracking-widest text-amber-400 mt-1">Director</p>
+              <p class="text-xs font-bold uppercase tracking-widest text-amber-400 mt-1">Techno Institute of Technology</p>
+            </div>
+
+            <!-- Director Message (Right) -->
+            <div class="lg:col-span-8 p-8 sm:p-12 space-y-5">
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-800 text-xs font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-quote-left"></i> Director's Message
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                "Education is the Bridge Between Ambition and Achievement"
+              </h2>
+              <p class="text-slate-600 leading-relaxed text-base">
+                Dear Students, Parents, and Well-Wishers,
+              </p>
+              <p class="text-slate-600 leading-relaxed text-base">
+                Welcome to <strong>TECHNO INSTITUTE OF TECHNOLOGY (TIT)</strong>. Guided by our core motto, <em>"YOUR
+                  SUCCESS OUR GOAL"</em>, we are dedicated to nurturing disciplined, technically skilled, and socially
+                responsible citizens. In today's rapidly evolving digital world, strong academic foundations paired with
+                practical computer literacy and healthy living prepare students to excel in every competitive arena.
+              </p>
+              <p class="text-slate-600 leading-relaxed text-base">
+                Alongside academic excellence and our transparent online CBT examination system, TIT actively leads
+                community-driven initiatives in plastic waste management and holistic yoga training. I wish every
+                candidate grand success in their academic journey!
+              </p>
+              <div class="pt-2 flex items-center gap-4 border-t border-slate-100">
+                <div>
+                  <div class="font-extrabold text-slate-900">Director's Desk</div>
+                  <div class="text-xs text-slate-500 font-medium">TECHNO INSTITUTE OF TECHNOLOGY</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1C. Our Project Section (Unified Plastic Initiative + Yoga Training) -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span
+            class="inline-block px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold uppercase tracking-wider mb-2">
+            Social &amp; Wellness Initiative
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Our Project</h2>
+          <p class="text-slate-600 mt-2 text-sm sm:text-base">
+            Building a cleaner environment and healthier mind &amp; body through our flagship integrated community
+            project.
+          </p>
+        </div>
+
+        <div
+          class="bg-gradient-to-br from-emerald-950 via-teal-900 to-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-emerald-700/40 text-white">
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-5 relative min-h-[260px]">
+              <img src="https://placehold.co/700x550/065f46/ecfdf5?text=Green+Earth+%26+Yoga+Project"
+                alt="Our Project - Plastic Recycling & Yoga" class="w-full h-full object-cover" />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-6">
+                <span
+                  class="px-3.5 py-1.5 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow">
+                  TIT Flagship Social Mission
+                </span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7 p-8 sm:p-10 space-y-6 flex flex-col justify-center">
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+                Clean Earth &amp; Healthy Life Initiative (Plastic Management &amp; Yoga Training)
+              </h3>
+              <p class="text-emerald-100 leading-relaxed text-sm sm:text-base">
+                At Techno Institute of Technology, our flagship project unites environmental stewardship with personal
+                well-being—creating sustainable communities where both nature and individuals thrive.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15 space-y-2">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-emerald-400/20 text-emerald-300 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-recycle"></i>
+                  </div>
+                  <h4 class="font-extrabold text-lg text-amber-300">Plastic Waste Management &amp; Recycling</h4>
+                  <p class="text-xs sm:text-sm text-emerald-50/90 leading-relaxed">
+                    We actively work on plastic collection, segregation, awareness drives, and eco-friendly plastic
+                    recycling initiatives to reduce pollution and promote a plastic-free green ecosystem.
+                  </p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15 space-y-2">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-spa"></i>
+                  </div>
+                  <h4 class="font-extrabold text-lg text-amber-300">Yoga &amp; Holistic Wellness Training</h4>
+                  <p class="text-xs sm:text-sm text-emerald-50/90 leading-relaxed">
+                    Regular certified Yoga, Pranayama, and Meditation training sessions for students and citizens to
+                    boost concentration, mental peace, immunity, and physical fitness.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1D. Our Registrations Section -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span
+            class="inline-block px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-extrabold uppercase tracking-wider mb-2">
+            Official Accreditations &amp; Legal Recognition
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Our Registrations</h2>
+          <p class="text-slate-600 mt-2 text-sm sm:text-base">
+            Recognized, verified, and registered under national educational, quality, and statutory bodies.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="bg-white rounded-2xl shadow-md border border-slate-200 p-5 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div
+              class="w-full h-44 rounded-xl bg-slate-100 border-2 border-dashed border-slate-300 overflow-hidden mb-4 relative group">
+              <img id="regImg1" src="https://placehold.co/400x300/eff6ff/1e3a8a?text=ISO+9001%3A2015+CERT"
+                alt="ISO Registration" class="w-full h-full object-cover" />
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center font-bold mb-2">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-base">ISO 9001:2015 Certified</h3>
+            <p class="text-xs text-slate-500 mt-1">Quality Management System for Education &amp; Skill Training</p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl shadow-md border border-slate-200 p-5 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div
+              class="w-full h-44 rounded-xl bg-slate-100 border-2 border-dashed border-slate-300 overflow-hidden mb-4 relative group">
+              <img id="regImg2" src="https://placehold.co/400x300/fef3c7/92400e?text=MSME+UDYAM+REG"
+                alt="MSME Registration" class="w-full h-full object-cover" />
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold mb-2">
+              <i class="fa-solid fa-building-flag"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-base">MSME (Govt. of India)</h3>
+            <p class="text-xs text-slate-500 mt-1">Registered Micro, Small &amp; Medium Enterprise (Udyam)</p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl shadow-md border border-slate-200 p-5 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div
+              class="w-full h-44 rounded-xl bg-slate-100 border-2 border-dashed border-slate-300 overflow-hidden mb-4 relative group">
+              <img id="regImg3" src="https://placehold.co/400x300/ecfdf5/065f46?text=TRUST+%2F+SOCIETY+REG"
+                alt="Trust Registration" class="w-full h-full object-cover" />
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold mb-2">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-base">Govt. Trust / Act Registration</h3>
+            <p class="text-xs text-slate-500 mt-1">Registered Educational &amp; Social Welfare Organization</p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl shadow-md border border-slate-200 p-5 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div
+              class="w-full h-44 rounded-xl bg-slate-100 border-2 border-dashed border-slate-300 overflow-hidden mb-4 relative group">
+              <img id="regImg4" src="https://placehold.co/400x300/f3e8ff/581c87?text=DIGITAL+INDIA+%26+NITI"
+                alt="NITI Aayog / Digital India" class="w-full h-full object-cover" />
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold mb-2">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-base">NITI Aayog &amp; Skill Council</h3>
+            <p class="text-xs text-slate-500 mt-1">Empaneled for Youth Skill Development &amp; Wellness</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2: ABOUT US PAGE
+    ============================================================ -->
+    <section id="page-about-us" class="page-section hidden py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="bg-gradient-to-r from-blue-950 to-indigo-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl">
+          <span
+            class="px-3.5 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-extrabold uppercase tracking-wider">
+            Who We Are
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold mt-3">About TECHNO INSTITUTE OF TECHNOLOGY</h2>
+          <p class="text-blue-200 mt-2 text-base sm:text-lg max-w-3xl">
+            YOUR SUCCESS OUR GOAL — Dedicated to accessible academic excellence, digital testing innovation, and
+            holistic social upliftment.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8 sm:p-10 space-y-4">
+          <div class="flex items-center gap-3 text-blue-900">
+            <div class="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-landmark"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold">About TIT</h3>
+          </div>
+          <p class="text-slate-600 leading-relaxed text-base">
+            <strong>TECHNO INSTITUTE OF TECHNOLOGY (TIT)</strong> is a premier educational and skill development
+            institution founded with a clear commitment to delivering quality education, modern computer literacy, and
+            transparent online assessment systems for students across the country and around the globe.
+          </p>
+          <p class="text-slate-600 leading-relaxed text-base">
+            We believe that true education goes beyond textbooks. Alongside rigorous academic preparation and
+            Computer-Based Testing (CBT) readiness for school and competitive students, TIT actively champions
+            environmental sustainability through our Plastic Waste Management &amp; Recycling project and promotes
+            mental and physical harmony through structured Yoga training programs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8 sm:p-10 space-y-4 border-t-4 border-t-blue-800">
+            <div
+              class="w-14 h-14 rounded-2xl bg-blue-900 text-amber-400 flex items-center justify-center text-2xl shadow">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900">Our Mission</h3>
+            <ul class="space-y-3 text-slate-600 text-sm sm:text-base">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-circle-check text-blue-700 mt-1"></i>
+                <span>To provide affordable, high-quality education and modern digital examination exposure to every
+                  student regardless of geographical barriers.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-circle-check text-blue-700 mt-1"></i>
+                <span>To empower youth with practical technology skills, analytical confidence, and ethical
+                  values.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-circle-check text-blue-700 mt-1"></i>
+                <span>To contribute actively toward a cleaner environment through plastic recycling awareness and
+                  healthier lifestyles via regular yoga practice.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8 sm:p-10 space-y-4 border-t-4 border-t-amber-500">
+            <div
+              class="w-14 h-14 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center text-2xl shadow">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900">Our Vision</h3>
+            <ul class="space-y-3 text-slate-600 text-sm sm:text-base">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-star text-amber-500 mt-1"></i>
+                <span>To emerge as a globally trusted center of excellence in digital education, online assessment, and
+                  holistic student development.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-star text-amber-500 mt-1"></i>
+                <span>To bridge the rural-urban digital divide by bringing standardized CBT platforms directly to every
+                  learner's fingertips.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-star text-amber-500 mt-1"></i>
+                <span>To inspire a generation of healthy, environmentally conscious, and future-ready achievers living
+                  up to our motto: <strong>"YOUR SUCCESS OUR GOAL"</strong>.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3: CONTACT US PAGE
+    ============================================================ -->
+    <section id="page-contact-us" class="page-section hidden py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span
+            class="px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-extrabold uppercase tracking-wider">
+            Get In Touch
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Contact Us</h2>
+          <p class="text-slate-600 mt-2 text-sm sm:text-base">
+            Have questions about admissions, CBT examinations, or our projects? Reach out to our support desk anytime.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div
+            class="lg:col-span-5 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col justify-between space-y-8">
+            <div class="space-y-6">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Head Office &amp; Exam
+                  Center</span>
+                <h3 class="text-2xl font-extrabold mt-1">TECHNO INSTITUTE OF TECHNOLOGY</h3>
+                <p class="text-xs text-blue-200 mt-0.5 font-semibold tracking-wider">YOUR SUCCESS OUR GOAL</p>
+              </div>
+
+              <div class="space-y-5 pt-2">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-white/10 text-amber-400 flex items-center justify-center text-lg flex-shrink-0">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wider text-blue-300 font-bold">Location / Address</div>
+                    <div class="text-sm sm:text-base font-medium text-white mt-0.5">
+                      Krishnanagar, Sagar, South 24 Parganas (WB)- 743373
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-white/10 text-emerald-400 flex items-center justify-center text-lg flex-shrink-0">
+                    <i class="fa-solid fa-phone-volume"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wider text-blue-300 font-bold">Mobile Number</div>
+                    <div class="text-sm sm:text-base font-bold text-white mt-0.5">+91 9800291427 / 03210-291336</div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-white/10 text-sky-400 flex items-center justify-center text-lg flex-shrink-0">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wider text-blue-300 font-bold">Email ID</div>
+                    <div class="text-sm sm:text-base font-medium text-white mt-0.5">thub9838@gmail.com</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-white/10 rounded-2xl p-4 border border-white/15 text-xs text-blue-100 flex items-center gap-3">
+              <i class="fa-solid fa-clock text-amber-400 text-lg"></i>
+              <span>Support Hours: Monday – Saturday, 09:00 AM to 07:00 PM IST</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-white rounded-3xl shadow-xl border border-slate-200 p-8 sm:p-10">
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Send Us a Message</h3>
+            <p class="text-slate-500 text-sm mb-6">Fill out the form below and our team will get back to you promptly.</p>
+
+            <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Your Full Name *</label>
+                  <input type="text" id="contactName" required placeholder="Enter your name"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none text-sm" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Mobile / Email *</label>
+                  <input type="text" id="contactInfo" required placeholder="Phone number or Email ID"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none text-sm" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Subject *</label>
+                <input type="text" id="contactSubject" required placeholder="e.g., CBT Exam Query / Admission / Project"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none text-sm" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Your Message *</label>
+                <textarea id="contactMessage" rows="4" required placeholder="Write your message here..."
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none text-sm"></textarea>
+              </div>
+
+              <button type="submit" id="contactSubmitBtn"
+                class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-blue-900 hover:bg-blue-800 text-white font-extrabold text-sm shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4: CANDIDATE SIGN UP PAGE
+    ============================================================ -->
+    <section id="page-signup" class="page-section hidden py-12 sm:py-16">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-blue-950 to-indigo-900 px-6 sm:px-8 py-6 text-white">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Online Examination
+                  Registration</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold mt-1">Candidate Sign Up</h2>
+              </div>
+              <div
+                class="w-12 h-12 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center text-xl font-bold shadow">
+                <i class="fa-solid fa-id-card"></i>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-blue-200 mt-2">
+              Register to generate your unique <strong>TIT Registration Number</strong>. Your Date of Birth will act as
+              your login Password.
+            </p>
+          </div>
+
+          <form id="signupForm" onsubmit="handleSignupSubmit(event)" class="p-6 sm:p-8 space-y-5">
+            <!-- Candidate Name (UPPERCASE ONLY) -->
+            <div>
+              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
+                Candidate Name <span class="text-rose-600">*</span>
+                <span class="text-[11px] font-medium text-blue-700 normal-case ml-1">(CAPITAL LETTERS ONLY)</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+                <input type="text" id="signupName" required placeholder="ENTER FULL NAME IN BLOCK LETTERS"
+                  oninput="enforceUppercaseLetters(this)"
+                  class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-700 focus:border-blue-700 outline-none font-bold uppercase tracking-wide text-slate-900" />
+              </div>
+            </div>
+
+            <!-- Mobile Number (+91 prefix, max 10 digits, OPTIONAL) -->
+            <div>
+              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
+                Mobile Number <span class="text-xs font-semibold text-emerald-700 normal-case">(Optional - Not
+                  Mandatory)</span>
+              </label>
+              <div
+                class="flex rounded-xl border border-slate-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-700 focus-within:border-blue-700">
+                <span
+                  class="inline-flex items-center px-4 bg-slate-100 text-slate-800 font-extrabold text-sm border-r border-slate-300 select-none">
+                  +91
+                </span>
+                <input type="tel" id="signupMobile" maxlength="10" placeholder="Enter 10-digit mobile number (Optional)"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)"
+                  class="w-full px-4 py-3 outline-none text-sm font-semibold text-slate-900" />
+              </div>
+            </div>
+
+            <!-- Class & Date of Birth Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
+                  Class <span class="text-rose-600">*</span>
+                </label>
+                <select id="signupClass" required
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-700 focus:border-blue-700 outline-none font-bold text-slate-900 bg-white">
+                  <option value="10th" selected>10th</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
+                  Date of Birth <span class="text-rose-600">*</span>
+                  <span class="text-[10px] font-semibold text-amber-700 normal-case block">(This will be your
+                    Password)</span>
+                </label>
+                <input type="date" id="signupDob" required
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-700 focus:border-blue-700 outline-none font-bold text-slate-900" />
+              </div>
+            </div>
+
+            <!-- Captcha Code + Dedicated Verify Button -->
+            <div class="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-3">
+              <div class="flex items-center justify-between">
+                <label class="text-xs font-extrabold uppercase tracking-wider text-slate-700">
+                  Security Captcha Verification <span class="text-rose-600">*</span>
+                </label>
+                <button type="button" onclick="generateNewCaptcha()"
+                  class="text-xs font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1">
+                  <i class="fa-solid fa-rotate"></i> Refresh Captcha
+                </button>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <div id="captchaDisplayBox"
+                  class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-slate-800 via-blue-950 to-slate-800 text-amber-300 font-mono text-xl font-black tracking-[0.28em] text-center select-none border-2 border-slate-700 shadow-inner min-w-[155px]">
+                  TIT2026
+                </div>
+
+                <input type="text" id="signupCaptchaInput" placeholder="Enter Captcha" oninput="resetCaptchaStatus()"
+                  class="flex-grow px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-700 outline-none font-bold tracking-wider uppercase text-slate-900 bg-white" />
+
+                <button type="button" id="verifyCaptchaBtn" onclick="verifyCaptchaCode()"
+                  class="px-5 py-2.5 rounded-xl bg-indigo-700 hover:bg-indigo-800 text-white font-extrabold text-sm shadow transition flex items-center justify-center gap-1.5 flex-shrink-0">
+                  <i class="fa-solid fa-shield-check"></i> Verify
+                </button>
+              </div>
+
+              <div id="captchaStatusMsg" class="text-xs font-bold hidden"></div>
+            </div>
+
+            <!-- Confirmation Checkbox -->
+            <label
+              class="flex items-start gap-3 p-3.5 rounded-xl bg-blue-50/70 border border-blue-200 cursor-pointer select-none">
+              <input type="checkbox" id="signupConfirmCheck" required
+                class="mt-1 w-4 h-4 rounded text-blue-800 focus:ring-blue-700" />
+              <span class="text-xs sm:text-sm text-slate-700 font-medium">
+                I hereby confirm that all details entered above are true and correct, and I agree to appear in the
+                <strong>TECHNO INSTITUTE OF TECHNOLOGY</strong> CBT Examination.
+              </span>
+            </label>
+
+            <!-- Submit Button -->
+            <button type="submit" id="signupSubmitBtn"
+              class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 text-white font-extrabold text-base shadow-lg transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-user-check"></i> Sign Up &amp; Generate Registration Number
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5: EXAMINATION -> CBT TEST PORTAL (4-STAGE FLOW)
+    ============================================================ -->
+    <section id="page-cbt" class="page-section hidden py-8 sm:py-12">
+
+      <!-- STAGE 1: CBT LOGIN SCREEN -->
+      <div id="cbt-stage-login" class="max-w-lg mx-auto px-4">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 p-6 sm:p-8 text-white text-center">
+            <div
+              class="w-14 h-14 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center text-2xl mx-auto mb-3 shadow-lg">
+              <i class="fa-solid fa-laptop-file"></i>
+            </div>
+            <h2 class="text-2xl font-extrabold">CBT Examination Login</h2>
+            <p class="text-xs sm:text-sm text-blue-200 mt-1">TECHNO INSTITUTE OF TECHNOLOGY — Online Test Portal</p>
+          </div>
+
+          <form onsubmit="handleCbtLoginSubmit(event)" class="p-6 sm:p-8 space-y-5">
+            <div>
+              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
+                Registration Number <span class="text-rose-600">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                  <i class="fa-solid fa-id-badge"></i>
+                </span>
+                <input type="text" id="cbtLoginRegNo" required placeholder="e.g., TIT20261001"
+                  oninput="this.value = this.value.toUpperCase().trim()"
+                  class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-700 outline-none font-bold uppercase text-slate-900" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
+                Password (Date of Birth) <span class="text-rose-600">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                  <i class="fa-solid fa-key"></i>
+                </span>
+                <input type="date" id="cbtLoginPassword" required
+                  class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-700 outline-none font-bold text-slate-900" />
+              </div>
+              <p class="text-[11px] text-slate-500 mt-1">Select your registered Date of Birth as Password.</p>
+            </div>
+
+            <label
+              class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer select-none">
+              <input type="checkbox" id="cbtLoginConfirmCheck" required class="mt-1 w-4 h-4 rounded text-blue-800" />
+              <span class="text-xs sm:text-sm text-slate-700 font-medium">
+                I confirm my Registration Number &amp; Password and am ready to verify my candidate profile.
+              </span>
+            </label>
+
+            <button type="submit" id="cbtLoginSubmitBtn"
+              class="w-full py-3.5 rounded-2xl bg-blue-900 hover:bg-blue-800 text-white font-extrabold text-base shadow-lg transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-right-to-bracket"></i> Submit &amp; Login
+            </button>
+
+            <div class="text-center pt-2 border-t border-slate-100">
+              <p class="text-xs text-slate-600">
+                Don't have a Registration Number yet?
+                <button type="button" onclick="navigateTo('signup')"
+                  class="text-blue-700 font-extrabold hover:underline ml-1">
+                  Sign Up Here
+                </button>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- STAGE 2: CANDIDATE DETAILS VERIFICATION CONFIRMATION BOX -->
+      <div id="cbt-stage-verify" class="hidden max-w-xl mx-auto px-4">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+          <div class="bg-blue-900 px-6 py-5 text-white flex items-center gap-3">
+            <i class="fa-solid fa-user-check text-amber-400 text-2xl"></i>
+            <div>
+              <h3 class="text-xl font-extrabold">Confirm Candidate Details</h3>
+              <p class="text-xs text-blue-200">Please verify your registration profile before proceeding</p>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 space-y-5">
+            <div class="bg-slate-50 rounded-2xl border border-slate-200 divide-y divide-slate-200">
+              <div class="px-5 py-3.5 flex justify-between items-center">
+                <span class="text-xs font-bold uppercase text-slate-500">Registration No.</span>
+                <span id="verifyShowRegNo" class="font-extrabold text-blue-900 text-sm sm:text-base"></span>
+              </div>
+              <div class="px-5 py-3.5 flex justify-between items-center">
+                <span class="text-xs font-bold uppercase text-slate-500">Candidate Name</span>
+                <span id="verifyShowName" class="font-extrabold text-slate-900 text-sm sm:text-base"></span>
+              </div>
+              <div class="px-5 py-3.5 flex justify-between items-center">
+                <span class="text-xs font-bold uppercase text-slate-500">Class</span>
+                <span id="verifyShowClass" class="font-bold text-slate-800 text-sm sm:text-base"></span>
+              </div>
+              <div class="px-5 py-3.5 flex justify-between items-center">
+                <span class="text-xs font-bold uppercase text-slate-500">Date of Birth</span>
+                <span id="verifyShowDob" class="font-bold text-slate-800 text-sm sm:text-base"></span>
+              </div>
+              <div class="px-5 py-3.5 flex justify-between items-center">
+                <span class="text-xs font-bold uppercase text-slate-500">Mobile Number</span>
+                <span id="verifyShowMobile" class="font-bold text-slate-800 text-sm sm:text-base"></span>
+              </div>
+            </div>
+
+            <label
+              class="flex items-start gap-3 p-4 rounded-xl bg-amber-50 border border-amber-300 cursor-pointer select-none">
+              <input type="checkbox" id="verifyDetailsCheckbox" class="mt-1 w-4 h-4 rounded text-blue-800" />
+              <span class="text-xs sm:text-sm text-slate-800 font-semibold">
+                I confirm that the Name, Mobile Number, Date of Birth, and Class displayed above belong to me and are
+                accurate.
+              </span>
+            </label>
+
+            <div class="flex justify-between gap-3 pt-2">
+              <button type="button" onclick="resetCbtToLogin()"
+                class="px-5 py-3 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-100">
+                Cancel
+              </button>
+              <button type="button" onclick="proceedToRulesPage()"
+                class="px-8 py-3 rounded-xl bg-blue-900 hover:bg-blue-800 text-white font-extrabold text-sm shadow-lg transition flex items-center gap-2">
+                Next <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 3: RULES & REGULATIONS PAGE -->
+      <div id="cbt-stage-rules" class="hidden max-w-4xl mx-auto px-4">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 p-6 text-white">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/15 pb-4">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Official CBT Instructions</span>
+                <h2 class="text-2xl font-extrabold mt-0.5">Rules &amp; Regulations</h2>
+              </div>
+              <div class="bg-white/10 rounded-2xl px-4 py-2.5 border border-white/15 text-xs sm:text-sm space-y-0.5">
+                <div><span class="text-blue-300">Reg No:</span> <strong id="rulesShowRegNo" class="text-amber-300"></strong></div>
+                <div><span class="text-blue-300">Name:</span> <strong id="rulesShowName"></strong></div>
+                <div><span class="text-blue-300">Class:</span> <strong id="rulesShowClass"></strong></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 text-center">
+                <div class="text-xs font-bold uppercase text-blue-700">Total Questions</div>
+                <div class="text-2xl font-black text-blue-950 mt-1">50 Questions</div>
+                <div class="text-xs text-slate-600">1 Mark per Question</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-center">
+                <div class="text-xs font-bold uppercase text-amber-700">Total Marks &amp; Duration</div>
+                <div class="text-2xl font-black text-amber-900 mt-1">50 Marks | 60 Min</div>
+                <div class="text-xs text-slate-600">1 Hour Auto-Submit Timer</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-center">
+                <div class="text-xs font-bold uppercase text-emerald-700">Negative Marking</div>
+                <div class="text-2xl font-black text-emerald-900 mt-1">NO NEGATIVE</div>
+                <div class="text-xs text-slate-600">0 Marks Deducted for Wrong</div>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-sm text-slate-700 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+              <h4 class="font-extrabold text-slate-900 text-base">Please read all instructions carefully:</h4>
+              <ol class="list-decimal list-inside space-y-2.5 leading-relaxed">
+                <li>This Computer-Based Test (CBT) comprises <strong>50 Multiple Choice Questions (MCQs)</strong>
+                  carrying <strong>1 mark each</strong> (Total: <strong>50 Marks</strong>).</li>
+                <li>The total duration of the examination is <strong>1 Hour (60 Minutes)</strong>. A live countdown
+                  timer is displayed on the top-right panel.</li>
+                <li><strong>There is NO Negative Marking</strong> in this examination. Candidates are encouraged to
+                  attempt all questions.</li>
+                <li>Each question has 4 options (A, B, C, D). Click on an option radio button to select your answer.</li>
+                <li>Use <strong>Save &amp; Next</strong> to save your answer and move to the next question,
+                  <strong>Previous</strong> to revisit earlier questions, or <strong>Mark for Review &amp; Next</strong>
+                  to flag a question for later checking.</li>
+                <li>The Question Palette on the right shows color-coded status: <span
+                    class="px-2 py-0.5 rounded bg-emerald-600 text-white text-xs font-bold">Answered</span>, <span
+                    class="px-2 py-0.5 rounded bg-rose-600 text-white text-xs font-bold">Not Answered</span>, <span
+                    class="px-2 py-0.5 rounded bg-purple-600 text-white text-xs font-bold">Marked for Review</span>, and
+                  <span class="px-2 py-0.5 rounded bg-slate-200 text-slate-800 text-xs font-bold">Not Visited</span>.
+                </li>
+                <li>Once submitted (or when the 60-minute timer expires), your exam will be locked permanently and your
+                  scorecard will appear immediately.</li>
+              </ol>
+            </div>
+
+            <label
+              class="flex items-start gap-3 p-4 rounded-xl bg-blue-50 border border-blue-300 cursor-pointer select-none">
+              <input type="checkbox" id="rulesAgreeCheckbox" class="mt-1 w-4 h-4 rounded text-blue-800" />
+              <span class="text-xs sm:text-sm text-slate-900 font-bold">
+                I have read and understood all the Rules &amp; Regulations. I agree that there is no negative marking
+                and I am ready to begin my 1-hour CBT Examination.
+              </span>
+            </label>
+
+            <div class="flex justify-end">
+              <button type="button" onclick="startFinalCbtExam()"
+                class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-extrabold text-base shadow-lg transition flex items-center gap-2">
+                Next &amp; Start Exam <i class="fa-solid fa-play"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 4: OFFICIAL & PROFESSIONAL FINAL CBT EXAM INTERFACE -->
+      <div id="cbt-stage-exam" class="hidden max-w-7xl mx-auto px-3 sm:px-6">
+        <div
+          class="bg-slate-900 text-white rounded-t-2xl px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-700">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded-lg bg-amber-400 text-slate-950 font-black text-xs">TIT CBT PORTAL</span>
+            <span class="font-bold text-sm sm:text-base">All-India Online Assessment (50 Marks | No Negative
+              Marking)</span>
+          </div>
+          <div class="text-xs text-emerald-400 font-bold flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live Exam Session Active
+          </div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 bg-white shadow-2xl rounded-b-2xl border border-slate-300 overflow-hidden">
+
+          <!-- LEFT / MAIN AREA: QUESTION & OPTIONS (8 Cols) -->
+          <div
+            class="lg:col-span-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-300 min-h-[540px]">
+            <div>
+              <div class="px-5 sm:px-7 py-3.5 bg-slate-100 border-b border-slate-200 flex items-center justify-between">
+                <div class="font-extrabold text-blue-950 text-base sm:text-lg">
+                  Question No. <span id="cbtCurrentQNum">1</span> <span class="text-xs font-semibold text-slate-500">of
+                    50</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-bold">
+                  <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800">+1.00 Mark</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-200 text-slate-700">0.00 Negative</span>
+                </div>
+              </div>
+
+              <div class="p-5 sm:p-8 space-y-6">
+                <div id="cbtQuestionText" class="text-base sm:text-lg font-bold text-slate-900 leading-relaxed">
+                  Loading question...
+                </div>
+
+                <div id="cbtOptionsContainer" class="space-y-3"></div>
+              </div>
+            </div>
+
+            <div
+              class="px-4 sm:px-6 py-4 bg-slate-100 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
+              <div class="flex flex-wrap items-center gap-2">
+                <button type="button" onclick="cbtPrevQuestion()"
+                  class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold text-xs sm:text-sm shadow-sm transition flex items-center gap-1.5">
+                  <i class="fa-solid fa-chevron-left"></i> Previous
+                </button>
+                <button type="button" onclick="cbtMarkReviewAndNext()"
+                  class="px-4 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs sm:text-sm shadow-sm transition flex items-center gap-1.5">
+                  <i class="fa-solid fa-bookmark"></i> Mark for Review &amp; Next
+                </button>
+                <button type="button" onclick="cbtClearResponse()"
+                  class="px-3.5 py-2.5 rounded-xl bg-white hover:bg-rose-50 text-rose-700 border border-rose-200 font-bold text-xs sm:text-sm transition">
+                  Clear Response
+                </button>
+              </div>
+
+              <button type="button" onclick="cbtSaveAndNext()"
+                class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition flex items-center gap-1.5">
+                Save &amp; Next <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDEBAR: TIMER + STUDENT DETAILS BOX + QUESTION PALETTE (4 Cols) -->
+          <div class="lg:col-span-4 bg-slate-50 flex flex-col justify-between">
+            <div class="p-4 sm:p-5 space-y-4">
+              <div
+                class="bg-gradient-to-r from-slate-900 to-blue-950 text-white rounded-2xl p-4 shadow-md border border-blue-800 flex items-center justify-between">
+                <div>
+                  <div class="text-[11px] font-bold uppercase tracking-wider text-amber-400">Time Remaining</div>
+                  <div class="text-xs text-blue-200">Auto-submits at 00:00</div>
+                </div>
+                <div id="cbtTimerDisplay"
+                  class="font-mono text-2xl sm:text-3xl font-black text-amber-300 tracking-wider bg-slate-950/70 px-3.5 py-1.5 rounded-xl border border-amber-400/30">
+                  60:00
+                </div>
+              </div>
+
+              <div class="bg-white rounded-2xl p-4 border-2 border-blue-900/20 shadow-sm space-y-2">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-2.5">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-blue-900 text-amber-400 flex items-center justify-center font-black text-base flex-shrink-0">
+                    <i class="fa-solid fa-user-graduate"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Candidate Name</div>
+                    <div id="examSidebarName" class="font-extrabold text-slate-900 text-sm truncate">CANDIDATE NAME</div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs pt-0.5">
+                  <div class="bg-slate-50 p-2 rounded-xl border border-slate-200">
+                    <span class="text-slate-500 block text-[10px] font-bold uppercase">Reg. Number</span>
+                    <strong id="examSidebarRegNo" class="text-blue-900 font-extrabold">TIT2026XXXX</strong>
+                  </div>
+                  <div class="bg-slate-50 p-2 rounded-xl border border-slate-200">
+                    <span class="text-slate-500 block text-[10px] font-bold uppercase">Class</span>
+                    <strong id="examSidebarClass" class="text-slate-900 font-extrabold">10th</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
+                <div
+                  class="text-xs font-extrabold uppercase tracking-wider text-slate-700 border-b border-slate-100 pb-2">
+                  Question Palette (1 - 50)
+                </div>
+
+                <div class="grid grid-cols-2 gap-1.5 text-[11px] font-semibold text-slate-600">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-3.5 h-3.5 rounded bg-emerald-600 inline-block"></span> Answered (<span
+                      id="countAnswered">0</span>)
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-3.5 h-3.5 rounded bg-rose-600 inline-block"></span> Not Answered (<span
+                      id="countNotAnswered">0</span>)
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-3.5 h-3.5 rounded bg-purple-600 inline-block"></span> Marked (<span
+                      id="countMarked">0</span>)
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-3.5 h-3.5 rounded bg-slate-200 border border-slate-300 inline-block"></span> Not
+                    Visited (<span id="countNotVisited">50</span>)
+                  </div>
+                </div>
+
+                <div id="cbtQuestionPalette"
+                  class="grid grid-cols-5 sm:grid-cols-10 lg:grid-cols-5 gap-1.5 max-h-52 overflow-y-auto cbt-scroll pr-1 pt-1">
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 bg-white border-t border-slate-200">
+              <button type="button" onclick="confirmFinalExamSubmission()"
+                class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 text-white font-extrabold text-sm sm:text-base shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Submit Final Exam
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6: ADMIN PANEL (SERVER AUTHENTICATED)
+    ============================================================ -->
+    <section id="page-admin" class="page-section hidden py-10 sm:py-14">
+
+      <!-- ADMIN LOGIN GATE -->
+      <div id="admin-login-box" class="max-w-md mx-auto px-4">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-slate-900 to-blue-950 p-7 text-white text-center">
+            <div
+              class="w-14 h-14 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center text-2xl mx-auto mb-3 shadow">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <h2 class="text-2xl font-extrabold">Admin Control Panel</h2>
+            <p class="text-xs text-blue-200 mt-1">Authorized Personnel Only — Login Required</p>
+          </div>
+
+          <form onsubmit="handleAdminLogin(event)" class="p-7 space-y-5">
+            <div>
+              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">Admin User
+                ID</label>
+              <input type="text" id="adminUserIdInput" required placeholder="Enter Admin User ID"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-800 outline-none font-bold text-slate-900" />
+            </div>
+            <div>
+              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">Admin
+                Password</label>
+              <input type="password" id="adminPasswordInput" required placeholder="Enter Admin Password"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-800 outline-none font-bold text-slate-900" />
+            </div>
+
+            <button type="submit" id="adminLoginBtn"
+              class="w-full py-3.5 rounded-2xl bg-slate-900 hover:bg-blue-950 text-white font-extrabold text-sm shadow-lg transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-lock-open"></i> Access Admin Dashboard
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ADMIN DASHBOARD (UNLOCKED) -->
+      <div id="admin-dashboard-box" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div
+          class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-extrabold uppercase">Admin
+              Master Portal</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold mt-2">TECHNO INSTITUTE OF TECHNOLOGY — Records &amp; Results</h2>
+            <p class="text-xs sm:text-sm text-blue-200 mt-1">Manage registered students, view 50-mark CBT scorecards,
+              delete entries, and export to Excel.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="renderAdminTables()"
+              class="px-4 py-3 rounded-2xl bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs sm:text-sm shadow transition flex items-center gap-2">
+              <i class="fa-solid fa-rotate"></i> Refresh Data
+            </button>
+            <button onclick="exportAdminDataToExcel()"
+              class="px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm shadow-lg transition flex items-center gap-2">
+              <i class="fa-solid fa-file-excel text-base"></i> Export to Excel (.xls)
+            </button>
+            <button onclick="logoutAdmin()"
+              class="px-4 py-3 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs sm:text-sm shadow transition flex items-center gap-2">
+              <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+          </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div class="bg-white rounded-2xl p-6 shadow border border-slate-200 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold uppercase text-slate-500">Total Registered Candidates</div>
+              <div id="adminStatTotalReg" class="text-3xl font-black text-blue-900 mt-1">0</div>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-users"></i>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow border border-slate-200 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold uppercase text-slate-500">CBT Exams Submitted</div>
+              <div id="adminStatSubmitted" class="text-3xl font-black text-emerald-700 mt-1">0</div>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-file-circle-check"></i>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow border border-slate-200 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold uppercase text-slate-500">Contact Inquiries</div>
+              <div id="adminStatMessages" class="text-3xl font-black text-amber-600 mt-1">0</div>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Candidate Registrations & Results Table -->
+        <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden">
+          <div
+            class="p-5 sm:p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <h3 class="text-lg font-extrabold text-slate-900">
+              <i class="fa-solid fa-table-list text-blue-800 mr-2"></i> Candidate Registrations &amp; CBT Exam Results
+            </h3>
+            <div class="relative w-full sm:w-72">
+              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+              <input type="text" id="adminSearchInput" onkeyup="filterAdminCandidatesTable()"
+                placeholder="Search Name or Reg No..."
+                class="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-300 text-sm outline-none focus:ring-2 focus:ring-blue-700" />
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 uppercase text-[11px] font-extrabold border-b border-slate-200">
+                  <th class="py-3.5 px-4">Reg. No</th>
+                  <th class="py-3.5 px-4">Candidate Name</th>
+                  <th class="py-3.5 px-4">Class</th>
+                  <th class="py-3.5 px-4">DOB (Pwd)</th>
+                  <th class="py-3.5 px-4">Mobile</th>
+                  <th class="py-3.5 px-4">Exam Status</th>
+                  <th class="py-3.5 px-4">Attempted / Unatt.</th>
+                  <th class="py-3.5 px-4">Correct / Wrong</th>
+                  <th class="py-3.5 px-4">Marks (50)</th>
+                  <th class="py-3.5 px-4">Percentage</th>
+                  <th class="py-3.5 px-4 text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody id="adminCandidatesTableBody" class="divide-y divide-slate-200"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Contact Messages Table -->
+        <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden">
+          <div class="p-5 sm:p-6 border-b border-slate-200">
+            <h3 class="text-lg font-extrabold text-slate-900">
+              <i class="fa-solid fa-inbox text-amber-600 mr-2"></i> Contact Us Inquiries
+            </h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 uppercase text-[11px] font-extrabold border-b border-slate-200">
+                  <th class="py-3 px-4">Date</th>
+                  <th class="py-3 px-4">Name</th>
+                  <th class="py-3 px-4">Contact</th>
+                  <th class="py-3 px-4">Subject</th>
+                  <th class="py-3 px-4">Message</th>
+                  <th class="py-3 px-4 text-center">Delete</th>
+                </tr>
+              </thead>
+              <tbody id="adminMessagesTableBody" class="divide-y divide-slate-200"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer id="mainFooter" class="bg-slate-950 text-slate-300 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-white font-extrabold text-lg">TECHNO INSTITUTE OF TECHNOLOGY</h3>
+        <p class="text-amber-400 text-xs font-bold tracking-widest uppercase mt-0.5">YOUR SUCCESS OUR GOAL</p>
+        <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+          Empowering learners globally with quality education, transparent online CBT testing, environmental plastic
+          sustainability, and yoga wellness programs.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-xs">
+          <li><button onclick="navigateTo('home')" class="hover:text-amber-400 transition">Home</button></li>
+          <li><button onclick="navigateTo('about-us')" class="hover:text-amber-400 transition">About Us</button></li>
+          <li><button onclick="navigateTo('contact-us')" class="hover:text-amber-400 transition">Contact Us</button></li>
+          <li><button onclick="navigateTo('cbt')" class="hover:text-amber-400 transition">Examination — CBT Test</button></li>
+          <li><button onclick="navigateTo('signup')" class="hover:text-amber-400 transition">Student Sign Up</button></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-3">Contact Center</h4>
+        <p class="text-xs text-slate-400 space-y-1.5">
+          <span class="block"><i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i> Krishnanagar, Sagar, South
+            24 Parganas(WB)- 743373, India</span>
+          <span class="block"><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> +91 9800291427 |
+            03210-291336</span>
+          <span class="block"><i class="fa-solid fa-envelope text-amber-400 mr-1.5"></i> thub9838@gmail.com</span>
+        </p>
+      </div>
+    </div>
+    <div class="bg-slate-900/80 py-3.5 text-center text-xs text-slate-400 border-t border-slate-800/80">
+      &copy; 2026 TECHNO INSTITUTE OF TECHNOLOGY. All Rights Reserved. | Global Online CBT Portal
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT APPLICATION LOGIC ==================== -->
+  <script>
+    /* --------------------------------------------------------------------------
+       1. STATE & AUTH TOKENS (CONNECTED TO EXPRESS + MONGODB BACKEND)
+    -------------------------------------------------------------------------- */
+    const CAPTCHA_POOL = [
+      'TIT2026', 'GOAL99', 'TECH88', 'WIN2026', 'EDU754',
+      'EXAM50', 'PASS100', 'STAR42', 'APEX77', 'NEXT10',
+      'RISE24', 'FAST89', 'MIND65', 'CODE31', 'SMART9',
+      'BEST55', 'HERO12', 'RANK01', 'YOGA33', 'GREEN8',
+      'NOVA44', 'ZENITH', 'PRIME7', 'FOCUS2', 'LIGHT6',
+      'BRAVE3', 'NOBLE5', 'TRUST9', 'PRIDE1', 'GLORY4'
+    ];
+
+    let currentCaptchaCode = '';
+    let isCaptchaVerified = false;
+
+    // Session tokens & cached admin datasets
+    let studentToken = null;
+    let adminToken = sessionStorage.getItem('tit_admin_token') || null;
+    let cachedAdminCandidates = [];
+    let cachedAdminMessages = [];
+
+    // Active CBT Session State
+    let activeCandidate = null;
+    let cbtCurrentIndex = 0;
+    let cbtAnswers = new Array(50).fill(null);
+    let cbtStatus = new Array(50).fill('not_visited');
+    let cbtTimerSeconds = 3600;
+    let cbtTimerInterval = null;
+
+    /* --------------------------------------------------------------------------
+       2. 50 CBT QUESTIONS (1 MARK EACH = 50)
+    -------------------------------------------------------------------------- */
+    const CBT_QUESTIONS = [
+      { q: "জলের রাসায়নিক সংকেত কী?", opts: ["H2O", "CO2", "O2", "NaCl"], ans: 0 },
+      { q: "কোন গ্রহকে লাল গ্রহ বলা হয়?", opts: ["শুক্র", "মঙ্গল", "বৃহস্পতি", "শনি"], ans: 1 },
+      { q: "π (পাই)-এর মান দশমিকের পর দুই ঘর পর্যন্ত কত?", opts: ["3.12", "3.14", "3.16", "3.18"], ans: 1 },
+      { q: "ভারতীয় সংবিধানের জনক কাকে বলা হয়?", opts: ["মহাত্মা গান্ধী", "জওহরলাল নেহেরু", "ড. বি. আর. আম্বেদকর", "সর্দার বল্লভভাই প্যাটেল"], ans: 2 },
+      { q: "পৃথিবীর বায়ুমণ্ডলে কোন গ্যাসের পরিমাণ সবচেয়ে বেশি?", opts: ["অক্সিজেন", "কার্বন ডাই-অক্সাইড", "নাইট্রোজেন", "হাইড্রোজেন"], ans: 2 },
+      { q: "কম্পিউটারে CPU-এর সম্পূর্ণ নাম কী?", opts: ["সেন্ট্রাল প্রসেস ইউনিট", "সেন্ট্রাল প্রসেসিং ইউনিট", "কম্পিউটার পার্সোনাল ইউনিট", "সেন্ট্রাল প্রসেসর ইউটিলিটি"], ans: 1 },
+      { q: "2x + 6 = 16 হলে x-এর মান কত?", opts: ["3", "4", "5", "6"], ans: 2 },
+      { q: "উদ্ভিদের কোন অংশে সালোকসংশ্লেষ প্রক্রিয়া ঘটে?", opts: ["মূল", "কাণ্ড", "পাতা", "ফুল"], ans: 2 },
+      { q: "বিদ্যুৎ প্রবাহের SI একক কী?", opts: ["ভোল্ট", "ওহম", "অ্যাম্পিয়ার", "ওয়াট"], ans: 2 },
+      { q: "পৃথিবীর বৃহত্তম মহাসাগর কোনটি?", opts: ["আটলান্টিক মহাসাগর", "ভারত মহাসাগর", "আর্কটিক মহাসাগর", "প্রশান্ত মহাসাগর"], ans: 3 },
+      { q: "144-এর বর্গমূল কত?", opts: ["10", "11", "12", "14"], ans: 2 },
+      { q: "সূর্যের আলোতে থাকলে মানুষের ত্বকে কোন ভিটামিন তৈরি হয়?", opts: ["ভিটামিন A", "ভিটামিন B12", "ভিটামিন C", "ভিটামিন D"], ans: 3 },
+      { q: "ভারতের জাতীয় সঙ্গীত 'জন গণ মন' কে রচনা করেন?", opts: ["বঙ্কিমচন্দ্র চট্টোপাধ্যায়", "রবীন্দ্রনাথ ঠাকুর", "সরোজিনী নাইডু", "সুভাষচন্দ্র বসু"], ans: 1 },
+      { q: "বায়ুমণ্ডলীয় চাপ মাপার যন্ত্রের নাম কী?", opts: ["থার্মোমিটার", "ব্যারোমিটার", "হাইগ্রোমিটার", "অ্যামিটার"], ans: 1 },
+      { q: "সমকোণী ত্রিভুজের অতিভুজের বর্গ অপর দুই বাহুর বর্গের যোগফলের সমান। এটি কোন উপপাদ্য?", opts: ["থেলসের উপপাদ্য", "পিথাগোরাসের উপপাদ্য", "ইউক্লিডের সূত্র", "আর্কিমিডিসের নীতি"], ans: 1 },
+      { q: "নিচের কোনটি পুনর্নবীকরণযোগ্য শক্তির উৎস?", opts: ["কয়লা", "পেট্রোলিয়াম", "সৌরশক্তি", "প্রাকৃতিক গ্যাস"], ans: 2 },
+      { q: "ইন্টারনেটে WWW-এর সম্পূর্ণ নাম কী?", opts: ["ওয়ার্ল্ড ওয়াইড ওয়েব", "ওয়ার্ল্ড ওয়েব ওয়াইড", "ওয়াইড ওয়ার্ল্ড ওয়েব", "ওয়েব ওয়ার্ল্ড ওয়াইড"], ans: 0 },
+      { q: "কোন রক্তের গ্রুপকে সর্বজনীন রক্তদাতা বলা হয়?", opts: ["A+", "B+", "AB+", "O-"], ans: 3 },
+      { q: "২৫°C তাপমাত্রায় বিশুদ্ধ নিরপেক্ষ জলের pH মান কত?", opts: ["5", "7", "9", "14"], ans: 1 },
+      { q: "একটি ত্রিভুজের তিনটি অন্তঃকোণের সমষ্টি কত ডিগ্রি?", opts: ["90°", "180°", "270°", "360°"], ans: 1 },
+      { q: "কোন ধাতু সাধারণ ঘরের তাপমাত্রায় তরল অবস্থায় থাকে?", opts: ["লোহা", "পারদ", "অ্যালুমিনিয়াম", "তামা"], ans: 1 },
+      { q: "ভারতের কোন শহরকে 'ভারতের সিলিকন ভ্যালি' বলা হয়?", opts: ["মুম্বাই", "হায়দরাবাদ", "বেঙ্গালুরু", "পুনে"], ans: 2 },
+      { q: "উইন্ডোজ কম্পিউটারে নির্বাচিত লেখা কপি করার শর্টকাট কী কোনটি?", opts: ["Ctrl + V", "Ctrl + X", "Ctrl + C", "Ctrl + Z"], ans: 2 },
+      { q: "মানবদেহের কোন অঙ্গ রক্ত পরিশোধন করে?", opts: ["হৃদপিণ্ড", "বৃক্ক বা কিডনি", "ফুসফুস", "যকৃৎ"], ans: 1 },
+      { q: "একটি বৃত্তের ব্যাসার্ধ 7 সেমি হলে পরিধি কত? (π = 22/7 ধরতে হবে)", opts: ["22 সেমি", "44 সেমি", "154 সেমি", "14 সেমি"], ans: 1 },
+      { q: "বিশ্ব পরিবেশ দিবস প্রতি বছর কবে পালিত হয়?", opts: ["৫ জুন", "২২ এপ্রিল", "২১ জুন", "১৫ আগস্ট"], ans: 0 },
+      { q: "আন্তর্জাতিক যোগ দিবস কবে পালিত হয়?", opts: ["৫ জুন", "২১ জুন", "১ মে", "২ অক্টোবর"], ans: 1 },
+      { q: "গ্রিনহাউস প্রভাব ও বিশ্ব উষ্ণায়নের জন্য প্রধানত কোন গ্যাস দায়ী?", opts: ["অক্সিজেন", "নাইট্রোজেন", "কার্বন ডাই-অক্সাইড", "হিলিয়াম"], ans: 2 },
+      { q: "সোনার রাসায়নিক প্রতীক কী?", opts: ["Ag", "Au", "Fe", "Pb"], ans: 1 },
+      { q: "১ গিগাবাইট (GB) সমান কত মেগাবাইট (MB)?", opts: ["100 MB", "512 MB", "1000 MB", "1024 MB"], ans: 3 },
+      { q: "লেবু ও কমলালেবুতে কোন অ্যাসিড থাকে?", opts: ["অ্যাসিটিক অ্যাসিড", "সাইট্রিক অ্যাসিড", "ল্যাকটিক অ্যাসিড", "টারটারিক অ্যাসিড"], ans: 1 },
+      { q: "শূন্যস্থানে আলোর গতিবেগ কত?", opts: ["3 × 10^8 মিটার/সেকেন্ড", "3 × 10^6 মিটার/সেকেন্ড", "3 × 10^5 মিটার/সেকেন্ড", "3 × 10^10 মিটার/সেকেন্ড"], ans: 0 },
+      { q: "ভারতের দীর্ঘতম নদী কোনটি?", opts: ["যমুনা", "ব্রহ্মপুত্র", "গঙ্গা", "গোদাবরী"], ans: 2 },
+      { q: "ধারাটির পরবর্তী সংখ্যাটি কত: 2, 4, 8, 16, ___?", opts: ["24", "30", "32", "36"], ans: 2 },
+      { q: "ইন্টারনেটে ওয়েবসাইট দেখার জন্য কোন সফটওয়্যার ব্যবহার করা হয়?", opts: ["কম্পাইলার", "ওয়েব ব্রাউজার", "স্প্রেডশিট", "অ্যান্টিভাইরাস"], ans: 1 },
+      { q: "মানবদেহে আয়রনের অভাবে কোন রোগ হয়?", opts: ["স্কার্ভি", "রিকেট", "রক্তাল্পতা", "গলগণ্ড"], ans: 2 },
+      { q: "sin 90°-এর মান কত?", opts: ["0", "0.5", "1", "অসংজ্ঞায়িত"], ans: 2 },
+      { q: "PET (পলিইথিলিন টেরেফথ্যালেট) প্লাস্টিকের রিসাইক্লিং চিহ্নের নম্বর কত?", opts: ["কোড ১", "কোড ৩", "কোড ৬", "কোড ৭"], ans: 0 },
+      { q: "টেলিফোন কে আবিষ্কার করেন?", opts: ["থমাস এডিসন", "আলেকজান্ডার গ্রাহাম বেল", "নিকোলা টেসলা", "আইজ্যাক নিউটন"], ans: 1 },
+      { q: "কোষের শক্তিঘর কাকে বলা হয়?", opts: ["নিউক্লিয়াস", "রাইবোজোম", "মাইটোকন্ড্রিয়া", "গলজি বডি"], ans: 2 },
+      { q: "400-এর 25% কত?", opts: ["50", "75", "100", "125"], ans: 2 },
+      { q: "গাড়ির পিছনের দৃশ্য দেখার আয়না হিসেবে কোন আয়না ব্যবহৃত হয়?", opts: ["সমতল আয়না", "অবতল আয়না", "উত্তল আয়না", "নলাকার আয়না"], ans: 2 },
+      { q: "কম্পিউটারে RAM-এর সম্পূর্ণ নাম কী?", opts: ["রিড অ্যাক্সেস মেমোরি", "র‍্যান্ডম অ্যাক্সেস মেমোরি", "রান অল মেমোরি", "র‍্যাপিড অ্যাকশন মেমোরি"], ans: 1 },
+      { q: "সূর্যের সবচেয়ে কাছের গ্রহ কোনটি?", opts: ["শুক্র", "পৃথিবী", "বুধ", "মঙ্গল"], ans: 2 },
+      { q: "12 এবং 18-এর গরিষ্ঠ সাধারণ গুণনীয়ক (গসাগু) কত?", opts: ["2", "3", "6", "36"], ans: 2 },
+      { q: "কোন প্রাণায়ামকে বিকল্প নাসিকা শ্বাস-প্রশ্বাস বলা হয়?", opts: ["কপালভাতি", "অনুলোম-বিলোম", "ভ্রামরী", "ভস্ত্রিকা"], ans: 1 },
+      { q: "বিদ্যুতের বিভব পার্থক্য বা ভোল্টেজ মাপার যন্ত্র কোনটি?", opts: ["অ্যামিটার", "গ্যালভানোমিটার", "ভোল্টমিটার", "ওহমমিটার"], ans: 2 },
+      { q: "ভারতের রাজধানী কোনটি?", opts: ["মুম্বাই", "কলকাতা", "নয়াদিল্লি", "চেন্নাই"], ans: 2 },
+      { q: "একটি আয়তক্ষেত্রের দৈর্ঘ্য 10 সেমি এবং প্রস্থ 5 সেমি হলে ক্ষেত্রফল কত?", opts: ["15 বর্গ সেমি", "30 বর্গ সেমি", "50 বর্গ সেমি", "100 বর্গ সেমি"], ans: 2 },
+      { q: "নিচের কোনটি কম্পিউটারের ইনপুট ডিভাইস?", opts: ["মনিটর", "প্রিন্টার", "কিবোর্ড", "স্পিকার"], ans: 2 }
+    ];
+
+    /* --------------------------------------------------------------------------
+       3. INITIALIZATION ON WINDOW LOAD
+    -------------------------------------------------------------------------- */
+    window.onload = function () {
+      generateNewCaptcha();
+      navigateTo('home');
+    };
+
+    /* --------------------------------------------------------------------------
+       4. NAVIGATION & UI HELPERS
+    -------------------------------------------------------------------------- */
+    function navigateTo(pageId) {
+      const examStage = document.getElementById('cbt-stage-exam');
+      if (examStage && !examStage.classList.contains('hidden') && pageId !== 'cbt') {
+        showGlobalModal(
+          'Exam In Progress',
+          'You are currently taking your live CBT Examination. Please submit your exam before navigating to another page.'
+        );
+        return;
+      }
+
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
+      const target = document.getElementById('page-' + pageId);
+      if (target) {
+        target.classList.remove('hidden');
+      }
+
+      document.getElementById('mobileMenuDrawer').classList.add('hidden');
+      document.querySelectorAll('.nav-dropdown-menu').forEach(menu => menu.classList.add('hidden'));
+
+      if (pageId === 'signup') {
+        generateNewCaptcha();
+      }
+      if (pageId === 'admin') {
+        if (adminToken) {
+          document.getElementById('admin-login-box').classList.add('hidden');
+          document.getElementById('admin-dashboard-box').classList.remove('hidden');
+          renderAdminTables();
+        } else {
+          document.getElementById('admin-dashboard-box').classList.add('hidden');
+          document.getElementById('admin-login-box').classList.remove('hidden');
+        }
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenuDrawer').classList.toggle('hidden');
+    }
+
+    function toggleDropdown(menuId) {
+      const menu = document.getElementById(menuId);
+      const isHidden = menu.classList.contains('hidden');
+      document.querySelectorAll('.nav-dropdown-menu').forEach(m => m.classList.add('hidden'));
+      if (isHidden) menu.classList.remove('hidden');
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown-menu').forEach(m => m.classList.add('hidden'));
+      }
+    });
+
+    /* --------------------------------------------------------------------------
+       5. GLOBAL MODAL SYSTEM
+    -------------------------------------------------------------------------- */
+    function showGlobalModal(title, htmlContent, onOkCallback = null, headerColorClass = 'bg-blue-900') {
+      const modal = document.getElementById('globalModal');
+      const header = document.getElementById('globalModalHeader');
+      header.className = `px-6 py-4 text-white flex items-center justify-between ${headerColorClass}`;
+      document.getElementById('globalModalTitle').innerHTML = title;
+      document.getElementById('globalModalBody').innerHTML = htmlContent;
+
+      const footer = document.getElementById('globalModalFooter');
+      footer.innerHTML = `
+        <button id="globalModalOkBtn" class="px-6 py-2.5 bg-blue-800 hover:bg-blue-900 text-white font-extrabold rounded-xl shadow transition">
+          OK
+        </button>
+      `;
+
+      document.getElementById('globalModalOkBtn').onclick = function () {
+        closeGlobalModal();
+        if (typeof onOkCallback === 'function') onOkCallback();
+      };
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function showConfirmModal(title, htmlContent, onConfirmCallback, confirmText = 'Yes, Submit Exam') {
+      const modal = document.getElementById('globalModal');
+      const header = document.getElementById('globalModalHeader');
+      header.className = 'px-6 py-4 bg-blue-900 text-white flex items-center justify-between';
+      document.getElementById('globalModalTitle').innerHTML = title;
+      document.getElementById('globalModalBody').innerHTML = htmlContent;
+
+      const footer = document.getElementById('globalModalFooter');
+      footer.innerHTML = `
+        <button id="modalCancelBtn" class="px-4 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-xl transition">
+          Cancel
+        </button>
+        <button id="modalConfirmBtn" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-xl shadow transition">
+          ${confirmText}
+        </button>
+      `;
+
+      document.getElementById('modalCancelBtn').onclick = closeGlobalModal;
+      document.getElementById('modalConfirmBtn').onclick = function () {
+        closeGlobalModal();
+        if (typeof onConfirmCallback === 'function') onConfirmCallback();
+      };
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeGlobalModal() {
+      const modal = document.getElementById('globalModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    /* --------------------------------------------------------------------------
+       6. CONTACT US FORM HANDLER (POST /api/messages)
+    -------------------------------------------------------------------------- */
+    async function handleContactSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('contactSubmitBtn');
+      const name = document.getElementById('contactName').value.trim();
+      const contact = document.getElementById('contactInfo').value.trim();
+      const subject = document.getElementById('contactSubject').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+      try {
+        const res = await fetch('/api/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, contact, subject, message })
+        });
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          throw new Error(data.message || 'Could not send message.');
+        }
+
+        document.getElementById('contactForm').reset();
+        showGlobalModal(
+          '<i class="fa-solid fa-circle-check text-emerald-300"></i> Message Sent Successfully',
+          `Thank you, <strong>${name}</strong>! Your message regarding <em>"${subject}"</em> has been saved in our database.`,
+          null,
+          'bg-emerald-800'
+        );
+      } catch (err) {
+        showGlobalModal(
+          '<i class="fa-solid fa-triangle-exclamation text-amber-300"></i> Error Sending Message',
+          err.message || 'Server error. Please try again later.',
+          null,
+          'bg-rose-800'
+        );
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       7. SIGN UP FORM (POST /api/candidates)
+    -------------------------------------------------------------------------- */
+    function enforceUppercaseLetters(inputEl) {
+      inputEl.value = inputEl.value.toUpperCase().replace(/[^A-Z\s]/g, '');
+    }
+
+    function generateNewCaptcha() {
+      if (Math.random() > 0.4) {
+        const idx = Math.floor(Math.random() * CAPTCHA_POOL.length);
+        currentCaptchaCode = CAPTCHA_POOL[idx];
+      } else {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let code = '';
+        for (let i = 0; i < 6; i++) {
+          code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        currentCaptchaCode = code;
+      }
+
+      document.getElementById('captchaDisplayBox').textContent = currentCaptchaCode;
+      document.getElementById('signupCaptchaInput').value = '';
+      resetCaptchaStatus();
+    }
+
+    function resetCaptchaStatus() {
+      isCaptchaVerified = false;
+      const msgEl = document.getElementById('captchaStatusMsg');
+      msgEl.classList.add('hidden');
+      const btn = document.getElementById('verifyCaptchaBtn');
+      btn.className = 'px-5 py-2.5 rounded-xl bg-indigo-700 hover:bg-indigo-800 text-white font-extrabold text-sm shadow transition flex items-center justify-center gap-1.5 flex-shrink-0';
+      btn.innerHTML = '<i class="fa-solid fa-shield-check"></i> Verify';
+    }
+
+    function verifyCaptchaCode() {
+      const userVal = document.getElementById('signupCaptchaInput').value.trim().toUpperCase();
+      const msgEl = document.getElementById('captchaStatusMsg');
+      const btn = document.getElementById('verifyCaptchaBtn');
+
+      msgEl.classList.remove('hidden');
+
+      if (!userVal) {
+        isCaptchaVerified = false;
+        msgEl.className = 'text-xs font-extrabold text-rose-600 flex items-center gap-1.5';
+        msgEl.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Please enter the captcha code first.';
+        return;
+      }
+
+      if (userVal === currentCaptchaCode) {
+        isCaptchaVerified = true;
+        msgEl.className = 'text-xs font-extrabold text-emerald-700 flex items-center gap-1.5';
+        msgEl.innerHTML = '<i class="fa-solid fa-circle-check"></i> Captcha Verified Successfully!';
+        btn.className = 'px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-extrabold text-sm shadow flex items-center justify-center gap-1.5 flex-shrink-0';
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Verified ✓';
+      } else {
+        isCaptchaVerified = false;
+        msgEl.className = 'text-xs font-extrabold text-rose-600 flex items-center gap-1.5';
+        msgEl.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Wrong Captcha Code! Please try again.';
+        btn.className = 'px-5 py-2.5 rounded-xl bg-rose-600 text-white font-extrabold text-sm shadow flex items-center justify-center gap-1.5 flex-shrink-0';
+        btn.innerHTML = '<i class="fa-solid fa-xmark"></i> Wrong ✗';
+      }
+    }
+
+    async function handleSignupSubmit(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('signupName').value.trim().toUpperCase();
+      const mobileRaw = document.getElementById('signupMobile').value.trim();
+      const studentClass = document.getElementById('signupClass').value;
+      const dob = document.getElementById('signupDob').value;
+      const isConfirmed = document.getElementById('signupConfirmCheck').checked;
+
+      if (!name || !/^[A-Z\s]+$/.test(name)) {
+        showGlobalModal('Invalid Name', 'Please enter Candidate Name using CAPITAL LETTERS (A-Z) only.', null, 'bg-rose-800');
+        return;
+      }
+
+      if (mobileRaw && mobileRaw.length !== 10) {
+        showGlobalModal('Invalid Mobile Number', 'Mobile number is optional, but if entered it must be exactly 10 digits.', null, 'bg-rose-800');
+        return;
+      }
+
+      if (!dob) {
+        showGlobalModal('Date of Birth Required', 'Please select your Date of Birth. It will serve as your login Password.', null, 'bg-rose-800');
+        return;
+      }
+
+      if (!isCaptchaVerified) {
+        showGlobalModal(
+          'Captcha Not Verified',
+          'Please enter the Captcha code and click the <strong>Verify</strong> button until you see the green checkmark before signing up.',
+          null,
+          'bg-rose-800'
+        );
+        return;
+      }
+
+      if (!isConfirmed) {
+        showGlobalModal('Confirmation Required', 'Please tick the confirmation checkbox before submitting.', null, 'bg-rose-800');
+        return;
+      }
+
+      const submitBtn = document.getElementById('signupSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Registering...';
+
+      try {
+        const res = await fetch('/api/candidates', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            mobile: mobileRaw || '',
+            studentClass,
+            dob
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.message || 'Registration failed.');
+        }
+
+        const serverRegNo = data.candidate.regNo;
+        document.getElementById('signupForm').reset();
+        generateNewCaptcha();
+
+        showGlobalModal(
+          '<i class="fa-solid fa-circle-check text-amber-300"></i> Registration Successful!',
+          `
+            <div class="space-y-4">
+              <p class="text-slate-700">Congratulations <strong>${name}</strong>! Your account has been registered on the server at <strong>TECHNO INSTITUTE OF TECHNOLOGY</strong>.</p>
+              <div class="bg-blue-50 border-2 border-blue-900/20 rounded-2xl p-4 space-y-2.5">
+                <div class="flex justify-between items-center">
+                  <span class="text-xs font-bold uppercase text-slate-500">Registration Number:</span>
+                  <span class="font-mono text-lg font-black text-blue-900 select-all">${serverRegNo}</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-blue-200 pt-2">
+                  <span class="text-xs font-bold uppercase text-slate-500">Password (Your DOB):</span>
+                  <span class="font-mono text-base font-extrabold text-emerald-700 select-all">${dob}</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500">Please note down your Registration Number and Date of Birth. Click <strong>OK</strong> to proceed directly to the CBT Test login page.</p>
+            </div>
+          `,
+          function () {
+            navigateTo('cbt');
+            resetCbtToLogin();
+            document.getElementById('cbtLoginRegNo').value = serverRegNo;
+            document.getElementById('cbtLoginPassword').value = dob;
+          },
+          'bg-emerald-800'
+        );
+      } catch (err) {
+        showGlobalModal(
+          '<i class="fa-solid fa-triangle-exclamation text-amber-300"></i> Registration Error',
+          err.message || 'Unable to connect to the server.',
+          null,
+          'bg-rose-800'
+        );
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-user-check"></i> Sign Up &amp; Generate Registration Number';
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       8. CBT TEST PORTAL FLOW (POST /api/login & PUT /api/candidates/:regNo)
+    -------------------------------------------------------------------------- */
+    function resetCbtToLogin() {
+      document.getElementById('cbt-stage-login').classList.remove('hidden');
+      document.getElementById('cbt-stage-verify').classList.add('hidden');
+      document.getElementById('cbt-stage-rules').classList.add('hidden');
+      document.getElementById('cbt-stage-exam').classList.add('hidden');
+      activeCandidate = null;
+      studentToken = null;
+    }
+
+    async function handleCbtLoginSubmit(e) {
+      e.preventDefault();
+      const regNo = document.getElementById('cbtLoginRegNo').value.trim().toUpperCase();
+      const password = document.getElementById('cbtLoginPassword').value;
+      const confirmed = document.getElementById('cbtLoginConfirmCheck').checked;
+
+      if (!confirmed) {
+        showGlobalModal('Confirmation Required', 'Please tick the confirmation checkbox below the login fields.', null, 'bg-rose-800');
+        return;
+      }
+
+      const btn = document.getElementById('cbtLoginSubmitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying...';
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ regNo, password })
+        });
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          if (data.alreadySubmitted) {
+            showGlobalModal(
+              '<i class="fa-solid fa-ban text-amber-300"></i> Exam Already Submitted',
+              `
+                <div class="space-y-3">
+                  <p class="font-bold text-rose-700 text-base">Exam Already Submitted!</p>
+                  <p class="text-slate-600 text-sm">Registration Number <strong>${regNo}</strong> has already completed and submitted this CBT Examination.</p>
+                  <p class="text-xs text-slate-500">Multiple attempts are not permitted with the same Registration Number.</p>
+                </div>
+              `,
+              null,
+              'bg-rose-800'
+            );
+          } else {
+            showGlobalModal(
+              '<i class="fa-solid fa-triangle-exclamation text-amber-300"></i> Invalid Credentials',
+              data.message || 'Registration Number or Password (Date of Birth) does not match our records.',
+              null,
+              'bg-rose-800'
+            );
+          }
+          return;
+        }
+
+        studentToken = data.token;
+        activeCandidate = data.candidate;
+
+        document.getElementById('verifyShowRegNo').textContent = activeCandidate.regNo;
+        document.getElementById('verifyShowName').textContent = activeCandidate.name;
+        document.getElementById('verifyShowClass').textContent = activeCandidate.studentClass;
+        document.getElementById('verifyShowDob').textContent = activeCandidate.dob;
+        document.getElementById('verifyShowMobile').textContent = activeCandidate.mobile;
+        document.getElementById('verifyDetailsCheckbox').checked = false;
+
+        document.getElementById('cbt-stage-login').classList.add('hidden');
+        document.getElementById('cbt-stage-verify').classList.remove('hidden');
+      } catch (err) {
+        showGlobalModal(
+          '<i class="fa-solid fa-triangle-exclamation text-amber-300"></i> Connection Error',
+          'Could not connect to the examination server. Please try again.',
+          null,
+          'bg-rose-800'
+        );
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Submit &amp; Login';
+      }
+    }
+
+    function proceedToRulesPage() {
+      if (!document.getElementById('verifyDetailsCheckbox').checked) {
+        showGlobalModal('Verification Required', 'Please tick the confirmation checkbox verifying your personal details before clicking Next.', null, 'bg-rose-800');
+        return;
+      }
+
+      document.getElementById('rulesShowRegNo').textContent = activeCandidate.regNo;
+      document.getElementById('rulesShowName').textContent = activeCandidate.name;
+      document.getElementById('rulesShowClass').textContent = activeCandidate.studentClass;
+      document.getElementById('rulesAgreeCheckbox').checked = false;
+
+      document.getElementById('cbt-stage-verify').classList.add('hidden');
+      document.getElementById('cbt-stage-rules').classList.remove('hidden');
+    }
+
+    function startFinalCbtExam() {
+      if (!document.getElementById('rulesAgreeCheckbox').checked) {
+        showGlobalModal('Rules Agreement Required', 'Please tick the confirmation box agreeing to the Rules & Regulations before starting the exam.', null, 'bg-rose-800');
+        return;
+      }
+
+      cbtCurrentIndex = 0;
+      cbtAnswers = new Array(50).fill(null);
+      cbtStatus = new Array(50).fill('not_visited');
+      cbtStatus[0] = 'not_answered';
+      cbtTimerSeconds = 3600;
+
+      document.getElementById('examSidebarName').textContent = activeCandidate.name;
+      document.getElementById('examSidebarRegNo').textContent = activeCandidate.regNo;
+      document.getElementById('examSidebarClass').textContent = activeCandidate.studentClass;
+
+      document.getElementById('cbt-stage-rules').classList.add('hidden');
+      document.getElementById('cbt-stage-exam').classList.remove('hidden');
+
+      renderCbtQuestion(0);
+      startCbtCountdownTimer();
+    }
+
+    function startCbtCountdownTimer() {
+      if (cbtTimerInterval) clearInterval(cbtTimerInterval);
+      updateTimerDisplay();
+
+      cbtTimerInterval = setInterval(() => {
+        cbtTimerSeconds--;
+        updateTimerDisplay();
+
+        if (cbtTimerSeconds <= 0) {
+          clearInterval(cbtTimerInterval);
+          finalizeAndScoreExam(true);
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(cbtTimerSeconds / 60);
+      const secs = cbtTimerSeconds % 60;
+      const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      const el = document.getElementById('cbtTimerDisplay');
+      el.textContent = formatted;
+      if (cbtTimerSeconds <= 300) {
+        el.classList.add('text-rose-400', 'animate-pulse');
+      } else {
+        el.classList.remove('text-rose-400', 'animate-pulse');
+      }
+    }
+
+    function renderCbtQuestion(index) {
+      cbtCurrentIndex = index;
+      if (cbtStatus[index] === 'not_visited') {
+        cbtStatus[index] = 'not_answered';
+      }
+
+      const qObj = CBT_QUESTIONS[index];
+      document.getElementById('cbtCurrentQNum').textContent = index + 1;
+      document.getElementById('cbtQuestionText').textContent = `Q${index + 1}. ${qObj.q}`;
+
+      const letters = ['A', 'B', 'C', 'D'];
+      const optionsHtml = qObj.opts.map((optText, optIdx) => {
+        const isChecked = cbtAnswers[index] === optIdx;
+        return `
+          <label onclick="selectCbtOption(${optIdx})" class="flex items-center gap-3.5 p-4 rounded-2xl border-2 cursor-pointer transition select-none ${isChecked
+            ? 'border-blue-700 bg-blue-50/90 shadow-sm'
+            : 'border-slate-200 hover:border-blue-300 hover:bg-slate-50'
+          }">
+            <input type="radio" name="cbtOptionRadio" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-blue-800 focus:ring-blue-700" />
+            <span class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black ${isChecked ? 'bg-blue-800 text-white' : 'bg-slate-200 text-slate-700'
+          }">${letters[optIdx]}</span>
+            <span class="text-sm sm:text-base font-semibold text-slate-800">${optText}</span>
+          </label>
+        `;
+      }).join('');
+
+      document.getElementById('cbtOptionsContainer').innerHTML = optionsHtml;
+      renderCbtPalette();
+    }
+
+    function selectCbtOption(optIdx) {
+      cbtAnswers[cbtCurrentIndex] = optIdx;
+      renderCbtQuestion(cbtCurrentIndex);
+    }
+
+    function cbtSaveAndNext() {
+      if (cbtAnswers[cbtCurrentIndex] !== null) {
+        cbtStatus[cbtCurrentIndex] = 'answered';
+      } else {
+        cbtStatus[cbtCurrentIndex] = 'not_answered';
+      }
+
+      if (cbtCurrentIndex < 49) {
+        renderCbtQuestion(cbtCurrentIndex + 1);
+      } else {
+        renderCbtPalette();
+      }
+    }
+
+    function cbtPrevQuestion() {
+      if (cbtCurrentIndex > 0) {
+        renderCbtQuestion(cbtCurrentIndex - 1);
+      }
+    }
+
+    function cbtMarkReviewAndNext() {
+      cbtStatus[cbtCurrentIndex] = 'marked';
+      if (cbtCurrentIndex < 49) {
+        renderCbtQuestion(cbtCurrentIndex + 1);
+      } else {
+        renderCbtPalette();
+      }
+    }
+
+    function cbtClearResponse() {
+      cbtAnswers[cbtCurrentIndex] = null;
+      cbtStatus[cbtCurrentIndex] = 'not_answered';
+      renderCbtQuestion(cbtCurrentIndex);
+    }
+
+    function renderCbtPalette() {
+      let ansCount = 0, notAnsCount = 0, markedCount = 0, notVisitedCount = 0;
+
+      const buttonsHtml = cbtStatus.map((st, idx) => {
+        if (st === 'answered') ansCount++;
+        else if (st === 'not_answered') notAnsCount++;
+        else if (st === 'marked') markedCount++;
+        else notVisitedCount++;
+
+        let colorClass = 'bg-slate-200 text-slate-800 border-slate-300';
+        if (st === 'answered') colorClass = 'bg-emerald-600 text-white border-emerald-700';
+        else if (st === 'not_answered') colorClass = 'bg-rose-600 text-white border-rose-700';
+        else if (st === 'marked') colorClass = 'bg-purple-600 text-white border-purple-700';
+
+        const activeRing = idx === cbtCurrentIndex ? 'ring-2 ring-offset-2 ring-amber-400 scale-105' : '';
+
+        return `
+          <button type="button" onclick="renderCbtQuestion(${idx})" class="h-9 rounded-xl border text-xs font-extrabold transition ${colorClass} ${activeRing}">
+            ${idx + 1}
+          </button>
+        `;
+      }).join('');
+
+      document.getElementById('cbtQuestionPalette').innerHTML = buttonsHtml;
+      document.getElementById('countAnswered').textContent = ansCount;
+      document.getElementById('countNotAnswered').textContent = notAnsCount;
+      document.getElementById('countMarked').textContent = markedCount;
+      document.getElementById('countNotVisited').textContent = notVisitedCount;
+    }
+
+    function confirmFinalExamSubmission() {
+      if (cbtAnswers[cbtCurrentIndex] !== null && cbtStatus[cbtCurrentIndex] !== 'marked') {
+        cbtStatus[cbtCurrentIndex] = 'answered';
+      }
+      const attempted = cbtAnswers.filter(a => a !== null).length;
+      const unattempted = 50 - attempted;
+
+      showConfirmModal(
+        '<i class="fa-solid fa-circle-question text-amber-300"></i> Confirm Final Exam Submission',
+        `
+          <div class="space-y-3">
+            <p>Are you sure you want to submit your CBT Examination now?</p>
+            <div class="bg-slate-100 rounded-xl p-3.5 text-sm space-y-1 font-semibold">
+              <div class="flex justify-between"><span>Total Questions:</span> <span>50</span></div>
+              <div class="flex justify-between text-emerald-700"><span>Answered:</span> <span>${attempted}</span></div>
+              <div class="flex justify-between text-rose-700"><span>Unanswered:</span> <span>${unattempted}</span></div>
+            </div>
+            <p class="text-xs text-slate-500">Once submitted, you cannot re-enter or modify your answers.</p>
+          </div>
+        `,
+        function () {
+          finalizeAndScoreExam(false);
+        }
+      );
+    }
+
+    async function finalizeAndScoreExam(isAutoTimeout) {
+      if (cbtTimerInterval) clearInterval(cbtTimerInterval);
+
+      let attempted = 0;
+      let correct = 0;
+      let wrong = 0;
+
+      cbtAnswers.forEach((selectedOpt, idx) => {
+        if (selectedOpt !== null) {
+          attempted++;
+          if (selectedOpt === CBT_QUESTIONS[idx].ans) {
+            correct++;
+          } else {
+            wrong++;
+          }
+        }
+      });
+
+      const unattempted = 50 - attempted;
+      const totalMarks = 50;
+      const obtainedMarks = correct;
+      const percentage = ((obtainedMarks / totalMarks) * 100).toFixed(2);
+
+      const resultPayload = {
+        attempted,
+        unattempted,
+        correct,
+        wrong,
+        obtainedMarks,
+        totalMarks,
+        percentage: percentage + '%',
+        submittedAt: new Date().toLocaleString('en-IN')
+      };
+
+      const candidateSnapshot = { ...activeCandidate };
+
+      try {
+        const res = await fetch(`/api/candidates/${encodeURIComponent(candidateSnapshot.regNo)}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${studentToken}`
+          },
+          body: JSON.stringify({ examResult: resultPayload })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          console.error('Server save warning:', data.message);
+        }
+      } catch (err) {
+        console.error('Error submitting exam result to server:', err);
+      }
+
+      document.getElementById('cbt-stage-exam').classList.add('hidden');
+      document.getElementById('cbt-stage-login').classList.remove('hidden');
+      document.getElementById('cbtLoginRegNo').value = '';
+      document.getElementById('cbtLoginPassword').value = '';
+      document.getElementById('cbtLoginConfirmCheck').checked = false;
+      activeCandidate = null;
+      studentToken = null;
+
+      showGlobalModal(
+        `<i class="fa-solid fa-award text-amber-300"></i> ${isAutoTimeout ? 'Time Up! Exam Auto-Submitted' : 'CBT Examination Scorecard'}`,
+        `
+          <div class="space-y-4">
+            <div class="bg-blue-950 text-white rounded-2xl p-4 text-center">
+              <div class="text-xs uppercase tracking-widest text-amber-400 font-bold">TECHNO INSTITUTE OF TECHNOLOGY</div>
+              <div class="text-lg font-extrabold mt-0.5">${candidateSnapshot.name}</div>
+              <div class="text-xs text-blue-200 mt-1">
+                Reg No: <strong>${candidateSnapshot.regNo}</strong> | DOB: <strong>${candidateSnapshot.dob}</strong> | Class: <strong>${candidateSnapshot.studentClass}</strong>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5 text-xs sm:text-sm">
+              <div class="p-3 rounded-xl bg-slate-100 flex justify-between">
+                <span class="text-slate-600 font-semibold">Total Questions:</span>
+                <strong class="text-slate-900">50</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-blue-50 flex justify-between">
+                <span class="text-blue-800 font-semibold">Answered:</span>
+                <strong class="text-blue-950">${attempted}</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-amber-50 flex justify-between">
+                <span class="text-amber-800 font-semibold">Unanswered:</span>
+                <strong class="text-amber-950">${unattempted}</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-emerald-50 flex justify-between">
+                <span class="text-emerald-800 font-semibold">Correct Answers:</span>
+                <strong class="text-emerald-700">${correct}</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-rose-50 flex justify-between">
+                <span class="text-rose-800 font-semibold">Wrong Answers:</span>
+                <strong class="text-rose-700">${wrong}</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-indigo-50 flex justify-between">
+                <span class="text-indigo-800 font-semibold">Score Obtained:</span>
+                <strong class="text-indigo-950">${obtainedMarks} / 50</strong>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white flex items-center justify-between shadow">
+              <span class="font-bold text-sm uppercase tracking-wider">Final Percentage</span>
+              <span class="text-2xl font-black">${percentage}%</span>
+            </div>
+          </div>
+        `,
+        function () {
+          navigateTo('home');
+        },
+        'bg-blue-950'
+      );
+    }
+
+    /* --------------------------------------------------------------------------
+       9. ADMIN PANEL (JWT AUTHENTICATED BACKEND INTEGRATION)
+    -------------------------------------------------------------------------- */
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      const userId = document.getElementById('adminUserIdInput').value.trim();
+      const password = document.getElementById('adminPasswordInput').value.trim();
+      const btn = document.getElementById('adminLoginBtn');
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...';
+
+      try {
+        const res = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId, password })
+        });
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          showGlobalModal(
+            '<i class="fa-solid fa-lock text-amber-300"></i> Access Denied',
+            data.message || 'Invalid Admin User ID or Password. Please try again.',
+            null,
+            'bg-rose-800'
+          );
+          return;
+        }
+
+        adminToken = data.token;
+        sessionStorage.setItem('tit_admin_token', adminToken);
+        document.getElementById('admin-login-box').classList.add('hidden');
+        document.getElementById('admin-dashboard-box').classList.remove('hidden');
+        await renderAdminTables();
+      } catch (err) {
+        showGlobalModal(
+          '<i class="fa-solid fa-triangle-exclamation text-amber-300"></i> Server Error',
+          'Unable to connect to the admin server.',
+          null,
+          'bg-rose-800'
+        );
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-lock-open"></i> Access Admin Dashboard';
+      }
+    }
+
+    function logoutAdmin() {
+      adminToken = null;
+      sessionStorage.removeItem('tit_admin_token');
+      cachedAdminCandidates = [];
+      cachedAdminMessages = [];
+      document.getElementById('adminUserIdInput').value = '';
+      document.getElementById('adminPasswordInput').value = '';
+      document.getElementById('admin-dashboard-box').classList.add('hidden');
+      document.getElementById('admin-login-box').classList.remove('hidden');
+    }
+
+    async function renderAdminTables() {
+      if (!adminToken) return;
+
+      try {
+        const [candRes, msgRes] = await Promise.all([
+          fetch('/api/admin/candidates', {
+            headers: { 'Authorization': `Bearer ${adminToken}` }
+          }),
+          fetch('/api/admin/messages', {
+            headers: { 'Authorization': `Bearer ${adminToken}` }
+          })
+        ]);
+
+        if (candRes.status === 401 || candRes.status === 403 || msgRes.status === 401 || msgRes.status === 403) {
+          logoutAdmin();
+          showGlobalModal('Session Expired', 'Please log in again to access the Admin Dashboard.', null, 'bg-amber-800');
+          return;
+        }
+
+        const candData = await candRes.json();
+        const msgData = await msgRes.json();
+
+        cachedAdminCandidates = candData.candidates || [];
+        cachedAdminMessages = msgData.messages || [];
+
+        document.getElementById('adminStatTotalReg').textContent = cachedAdminCandidates.length;
+        document.getElementById('adminStatSubmitted').textContent = cachedAdminCandidates.filter(c => c.examSubmitted).length;
+        document.getElementById('adminStatMessages').textContent = cachedAdminMessages.length;
+
+        filterAdminCandidatesTable();
+        renderAdminMessagesTable();
+      } catch (err) {
+        console.error('Error loading admin data:', err);
+      }
+    }
+
+    function filterAdminCandidatesTable() {
+      const query = (document.getElementById('adminSearchInput')?.value || '').toUpperCase().trim();
+      const filtered = cachedAdminCandidates.filter(c =>
+        (c.name || '').toUpperCase().includes(query) || (c.regNo || '').toUpperCase().includes(query)
+      );
+
+      const tbody = document.getElementById('adminCandidatesTableBody');
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="11" class="py-8 text-center text-slate-400 font-semibold">
+              No candidate records found.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(c => {
+        const res = c.examResult;
+        return `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="py-3.5 px-4 font-mono font-extrabold text-blue-900">${c.regNo}</td>
+            <td class="py-3.5 px-4 font-bold text-slate-900">${c.name}</td>
+            <td class="py-3.5 px-4 font-semibold">${c.studentClass || '-'}</td>
+            <td class="py-3.5 px-4 font-mono text-xs">${c.dob}</td>
+            <td class="py-3.5 px-4 text-xs">${c.mobile || 'Not Provided'}</td>
+            <td class="py-3.5 px-4">
+              ${c.examSubmitted
+            ? '<span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold">Submitted</span>'
+            : '<span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-[11px] font-extrabold">Pending</span>'
+          }
+            </td>
+            <td class="py-3.5 px-4 font-semibold">${res ? `${res.attempted} / ${res.unattempted}` : '-'}</td>
+            <td class="py-3.5 px-4 font-semibold">
+              ${res ? `<span class="text-emerald-700">${res.correct}</span> / <span class="text-rose-600">${res.wrong}</span>` : '-'}
+            </td>
+            <td class="py-3.5 px-4 font-extrabold text-slate-900">${res ? `${res.obtainedMarks} / 50` : '-'}</td>
+            <td class="py-3.5 px-4 font-extrabold text-blue-800">${res ? res.percentage : '-'}</td>
+            <td class="py-3.5 px-4 text-center">
+              <button onclick="deleteCandidateRecord('${c.regNo}')" title="Delete Record" class="px-3 py-1.5 rounded-lg bg-rose-100 hover:bg-rose-600 text-rose-700 hover:text-white font-bold text-xs transition">
+                <i class="fa-solid fa-trash-can"></i> Delete
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderAdminMessagesTable() {
+      const msgBody = document.getElementById('adminMessagesTableBody');
+      if (cachedAdminMessages.length === 0) {
+        msgBody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-6 text-center text-slate-400 font-semibold">No contact inquiries yet.</td>
+          </tr>
+        `;
+        return;
+      }
+
+      msgBody.innerHTML = cachedAdminMessages.map(m => `
+        <tr class="hover:bg-slate-50">
+          <td class="py-3 px-4 text-xs text-slate-500">${m.date || '-'}</td>
+          <td class="py-3 px-4 font-bold text-slate-900">${m.name}</td>
+          <td class="py-3 px-4 text-xs font-semibold text-blue-800">${m.contact}</td>
+          <td class="py-3 px-4 font-semibold">${m.subject}</td>
+          <td class="py-3 px-4 text-xs text-slate-600 max-w-xs">${m.message}</td>
+          <td class="py-3 px-4 text-center">
+            <button onclick="deleteContactMessage('${m._id}')" class="px-2.5 py-1 rounded-lg bg-rose-100 hover:bg-rose-600 text-rose-700 hover:text-white font-bold text-xs transition">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function deleteCandidateRecord(regNo) {
+      showConfirmModal(
+        '<i class="fa-solid fa-trash-can text-amber-300"></i> Delete Candidate Record',
+        `Are you sure you want to permanently delete candidate <strong>${regNo}</strong> from the database?`,
+        async function () {
+          try {
+            const res = await fetch(`/api/admin/candidates/${encodeURIComponent(regNo)}`, {
+              method: 'DELETE',
+              headers: { 'Authorization': `Bearer ${adminToken}` }
+            });
+            if (res.ok) {
+              await renderAdminTables();
+            }
+          } catch (err) {
+            console.error('Delete candidate failed:', err);
+          }
+        },
+        'Yes, Delete'
+      );
+    }
+
+    function deleteContactMessage(msgId) {
+      showConfirmModal(
+        '<i class="fa-solid fa-trash-can text-amber-300"></i> Delete Inquiry',
+        'Are you sure you want to permanently delete this contact message?',
+        async function () {
+          try {
+            const res = await fetch(`/api/admin/messages/${encodeURIComponent(msgId)}`, {
+              method: 'DELETE',
+              headers: { 'Authorization': `Bearer ${adminToken}` }
+            });
+            if (res.ok) {
+              await renderAdminTables();
+            }
+          } catch (err) {
+            console.error('Delete message failed:', err);
+          }
+        },
+        'Yes, Delete'
+      );
+    }
+
+    /* --------------------------------------------------------------------------
+       10. EXPORT ADMIN DATA TO EXCEL (.XLS)
+    -------------------------------------------------------------------------- */
+    function exportAdminDataToExcel() {
+      if (cachedAdminCandidates.length === 0) {
+        showGlobalModal('No Data to Export', 'There are currently no registered candidate records to export to Excel.', null, 'bg-amber-700');
+        return;
+      }
+
+      let tableHtml = `
+        <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta charset="UTF-8"></head>
+        <body>
+          <table border="1">
+            <thead>
+              <tr style="background-color:#1e3a8a; color:#ffffff; font-weight:bold;">
+                <th>Registration Number</th>
+                <th>Candidate Name</th>
+                <th>Class</th>
+                <th>Date of Birth (Password)</th>
+                <th>Mobile Number</th>
+                <th>Registered At</th>
+                <th>Exam Status</th>
+                <th>Total Questions</th>
+                <th>Answered</th>
+                <th>Unanswered</th>
+                <th>Correct Answers</th>
+                <th>Wrong Answers</th>
+                <th>Marks Obtained (Out of 50)</th>
+                <th>Percentage</th>
+                <th>Submitted At</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+
+      cachedAdminCandidates.forEach(c => {
+        const r = c.examResult;
+        tableHtml += `
+          <tr>
+            <td>${c.regNo}</td>
+            <td>${c.name}</td>
+            <td>${c.studentClass || ''}</td>
+            <td>${c.dob}</td>
+            <td>${c.mobile || 'Not Provided'}</td>
+            <td>${c.registeredAt || ''}</td>
+            <td>${c.examSubmitted ? 'Submitted' : 'Pending'}</td>
+            <td>50</td>
+            <td>${r ? r.attempted : 'N/A'}</td>
+            <td>${r ? r.unattempted : 'N/A'}</td>
+            <td>${r ? r.correct : 'N/A'}</td>
+            <td>${r ? r.wrong : 'N/A'}</td>
+            <td>${r ? r.obtainedMarks : 'N/A'}</td>
+            <td>${r ? r.percentage : 'N/A'}</td>
+            <td>${r ? r.submittedAt : 'N/A'}</td>
+          </tr>
+        `;
+      });
+
+      tableHtml += `</tbody></table></body></html>`;
+
+      const blob = new Blob([tableHtml], { type: 'application/vnd.ms-excel' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `TIT_CBT_Exam_Records_${new Date().toISOString().slice(0, 10)}.xls`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+
+</html>
